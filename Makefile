@@ -1,9 +1,13 @@
 NAME = cub3D
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g #-fsanitize=address
-MINIFLAGS = #-L./lib/minilibx_linux -L/usr/lib -lXext -lX11 -lm -lz -lbsd -I/usr/include
+# MLX kütüphanesinin doğru yollarla eklenmesi
+MINIFLAGS = -Llib/minilibx_linux -lmlx -L/usr/lib -Ilib/minilibx_linux -lXext -lX11 -lm -lz
 RM = rm -rf
-SRCS = cub3d.c
+SRCS = cub3d.c\
+		./utils/util.c\
+		./parser/control1.c
+
 MLX = ./lib/minilibx_linux/libmlx.a
 OBJS = $(SRCS:.c=.o)
 LIBFT = ./lib/libft/libft.a
@@ -12,23 +16,27 @@ NC = \033[0m
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(MLX)
-	@make -C ./lib/libft -s
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT) $(MINIFLAGS)
+# Makefile'daki bağımlılıkların sıralanması
+$(NAME): $(LIBFT) $(MLX) $(OBJS) 
+	$(CC) $(OBJS) $(LIBFT) $(MINIFLAGS) -o $(NAME)
 	@echo "$(PINK)<< THE GAME IS READY! <3 >>$(NC)"
 
+# MLX kütüphanesinin derlenmesi
 $(MLX):
 	@make -C ./lib/minilibx_linux
 
+$(LIBFT):
+	@make -C ./lib/libft
+
 clean:
-	@make clean -C ./lib/libft -s 
+	@make clean -C ./lib/libft
 	@make clean -C ./lib/minilibx_linux
 	$(RM) $(OBJS)
 	@echo "$(PINK)<< OBJECT FILES ARE REMOVED! <3 >>$(NC)"
 
 fclean: clean
-	@make fclean -C ./lib/libft -s 
 	$(RM) $(NAME)
+	@make fclean -C ./lib/libft
 	@echo "$(PINK)<< THE GAME IS REMOVED! <3 >>$(NC)"
 
 re: fclean all

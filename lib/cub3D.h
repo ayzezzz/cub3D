@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 18:09:31 by itulgar           #+#    #+#             */
-/*   Updated: 2025/01/11 18:09:35 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/01/11 20:12:49 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "./libft/libft.h"
 
 typedef struct s_textures
 {
@@ -35,9 +36,15 @@ typedef struct s_player
 typedef struct s_data
 {
     t_textures textures;
+    char ** map;
+    char **cpymap;
     t_player player;
 
 }t_data;
+
+void error_message(char *str);
+void file_path_control(char *argv);
+
 
 #endif
 

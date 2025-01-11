@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   util.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/11 18:09:16 by itulgar           #+#    #+#             */
-/*   Updated: 2025/01/11 20:01:45 by itulgar          ###   ########.fr       */
+/*   Created: 2025/01/11 19:50:56 by itulgar           #+#    #+#             */
+/*   Updated: 2025/01/11 21:00:25 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./lib/cub3D.h"
+#include "../lib/cub3D.h"
 
-
-int main(int argc, char **argv)
+void error_message(char *str)
 {
-    if(argc != 2)
-        error_message("Invalid Argumanet!!! 🥺\n");
-    file_path_control(argv[1]);
-    printf("heyopu");
-   
+    (void)str;
+    // printf(str);
+    exit(1);
 }
