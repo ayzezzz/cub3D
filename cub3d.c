@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 18:09:16 by itulgar           #+#    #+#             */
-/*   Updated: 2025/01/20 17:35:20 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/01/20 17:51:42 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int main(int argc, char **argv)
     file_path_control(argv[1]);
    t_data *data;
     data=(t_data*) ft_calloc(1,sizeof(t_data));
+    data->path = argv[1];
     if(!cub_check(data))
         {
             free(data);
