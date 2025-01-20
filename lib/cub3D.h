@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 18:09:31 by itulgar           #+#    #+#             */
-/*   Updated: 2025/01/20 15:19:56 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/01/20 17:34:39 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct s_data
 
 void error_message(char *str);
 void file_path_control(char *argv);
+int cub_check(t_data *data);
 
 
 #endif

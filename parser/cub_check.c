@@ -1,32 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   cub_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/11 18:09:16 by itulgar           #+#    #+#             */
-/*   Updated: 2025/01/20 17:35:20 by itulgar          ###   ########.fr       */
+/*   Created: 2025/01/20 17:31:53 by itulgar           #+#    #+#             */
+/*   Updated: 2025/01/20 17:34:48 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./lib/cub3D.h"
-
-
-int main(int argc, char **argv)
-{
-    if(argc != 2)
-        error_message("Invalid Argumanet!!! 🥺\n");
-    file_path_control(argv[1]);
-   t_data *data;
-    data=(t_data*) ft_calloc(1,sizeof(t_data));
-    if(!cub_check(data))
-        {
-            free(data);
-            return 0;
-        }
-    //libx
-    printf("sos");
-   free(data);
-   
+#include "../lib/cub3D.h"
+int cub_check(t_data *data){
+    (void)data;
+    return 0;
 }
