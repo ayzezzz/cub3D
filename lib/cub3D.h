@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 18:09:31 by itulgar           #+#    #+#             */
-/*   Updated: 2025/01/11 20:12:49 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/01/20 15:19:56 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "./libft/libft.h"
+#include "./get_next_line/get_next_line.h"
+#include "fcntl.h"
 
 typedef struct s_textures
 {

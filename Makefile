@@ -1,12 +1,13 @@
 NAME = cub3D
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g #-fsanitize=address
-# MLX kütüphanesinin doğru yollarla eklenmesi
-MINIFLAGS = -Llib/minilibx_linux -lmlx -L/usr/lib -Ilib/minilibx_linux -lXext -lX11 -lm -lz
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
+MINIFLAGS = -fsanitize=address -Llib/minilibx_linux -lmlx -L/usr/lib -Ilib/minilibx_linux -lXext -lX11 -lm -lz
 RM = rm -rf
 SRCS = cub3d.c\
 		./utils/util.c\
-		./parser/control1.c
+		./parser/control1.c\
+		./lib/get_next_line/get_next_line_utils.c\
+		./lib/get_next_line/get_next_line.c
 
 MLX = ./lib/minilibx_linux/libmlx.a
 OBJS = $(SRCS:.c=.o)
@@ -16,12 +17,10 @@ NC = \033[0m
 
 all: $(NAME)
 
-# Makefile'daki bağımlılıkların sıralanması
 $(NAME): $(LIBFT) $(MLX) $(OBJS) 
-	$(CC) $(OBJS) $(LIBFT) $(MINIFLAGS) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MINIFLAGS) -o $(NAME)
 	@echo "$(PINK)<< THE GAME IS READY! <3 >>$(NC)"
 
-# MLX kütüphanesinin derlenmesi
 $(MLX):
 	@make -C ./lib/minilibx_linux
 

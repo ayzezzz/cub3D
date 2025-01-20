@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zayaz <zayaz@student.42istanbul.com.tr>    +#+  +:+       +#+        */
+/*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 13:03:27 by zayaz             #+#    #+#             */
-/*   Updated: 2024/01/02 17:31:54 by zayaz            ###   ########.fr       */
+/*   Updated: 2025/01/20 15:15:55 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	*ft_nlbefore(char *stc);
 char	*ft_updtstc(char *stc);
 char	*ft_readfd(int fd, char *stc);
 int		ft_nlcntrl(char *s);
-int		ft_strlen(char *c);
-char	*ft_strjoin(char *s1, char *s2);
+int		ftg_strlen(char *c);
+char	*ftg_strjoin(char *s1, char *s2);
 
 #endif

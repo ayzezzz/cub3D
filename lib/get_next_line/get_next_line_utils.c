@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zayaz <zayaz@student.42istanbul.com.tr>    +#+  +:+       +#+        */
+/*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 12:38:45 by zayaz             #+#    #+#             */
-/*   Updated: 2024/01/15 14:59:32 by zayaz            ###   ########.fr       */
+/*   Updated: 2025/01/20 15:16:30 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	ft_strlen(char *c)
+int	ftg_strlen(char *c)
 {
 	int	i;
 
@@ -40,7 +40,7 @@ int	ft_nlcntrl(char *s)
 	return (0);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ftg_strjoin(char *s1, char *s2)
 {
 	int		i;
 	int		j;
@@ -51,7 +51,7 @@ char	*ft_strjoin(char *s1, char *s2)
 		s1 = malloc(1 + sizeof(char));
 		*s1 = '\0';
 	}
-	str = (char *)malloc(sizeof(char) * ((ft_strlen(s1) + ft_strlen(s2)) + 1));
+	str = (char *)malloc(sizeof(char) * ((ftg_strlen(s1) + ftg_strlen(s2)) + 1));
 	if (!str)
 		return (NULL);
 	i = -1;

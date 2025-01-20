@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:50:56 by itulgar           #+#    #+#             */
-/*   Updated: 2025/01/11 21:00:25 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/01/20 14:39:32 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void error_message(char *str)
 {
-    (void)str;
-    // printf(str);
+    printf("Error\n%s:",str);
     exit(1);
 }

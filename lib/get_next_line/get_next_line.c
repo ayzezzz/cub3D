@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zayaz <zayaz@student.42istanbul.com.tr>    +#+  +:+       +#+        */
+/*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 12:38:41 by zayaz             #+#    #+#             */
-/*   Updated: 2024/01/15 15:00:22 by zayaz            ###   ########.fr       */
+/*   Updated: 2025/01/20 15:16:17 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*ft_readfd(int fd, char *stc)
 			return (NULL);
 		}
 		buffer[control] = '\0';
-		stc = ft_strjoin(stc, buffer);
+		stc = ftg_strjoin(stc, buffer);
 	}
 	free(buffer);
 	return (stc);
@@ -52,7 +52,7 @@ char	*ft_updtstc(char *stc)
 		free(stc);
 		return (NULL);
 	}
-	s = malloc(sizeof(char) * (ft_strlen(stc) - i + 1));
+	s = malloc(sizeof(char) * (ftg_strlen(stc) - i + 1));
 	if (!s)
 		return (NULL);
 	i++;
