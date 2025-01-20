@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 18:09:31 by itulgar           #+#    #+#             */
-/*   Updated: 2025/01/20 17:52:01 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/01/20 19:01:07 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,13 @@
 #include "./libft/libft.h"
 #include "./get_next_line/get_next_line.h"
 #include "fcntl.h"
+
+#define NO 0
+#define SO 1
+#define WE 2
+#define EA 3
+#define F 4
+#define C 5
 
 typedef struct s_textures
 {
@@ -57,7 +64,7 @@ void error_message(char *str);
 void file_path_control(char *argv);
 int cub_check(t_data *data);
 int texture_count_check(t_data *data);
-
+int is_fill_textures(t_data *data);
 
 #endif
 
