@@ -8,7 +8,8 @@ SRCS = cub3d.c\
 		./parser/control1.c\
 		./lib/get_next_line/get_next_line_utils.c\
 		./lib/get_next_line/get_next_line.c\
-		./parser/cub_check.c
+		./parser/cub_check.c\
+		./parser/map_check.c
 
 MLX = ./lib/minilibx_linux/libmlx.a
 OBJS = $(SRCS:.c=.o)
