@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
+#include <stdio.h>
 char	*ft_readfd(int fd, char *stc)
 {
 	char	*buffer;
