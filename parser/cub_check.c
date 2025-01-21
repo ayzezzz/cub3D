@@ -6,7 +6,7 @@
 /*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 17:31:53 by itulgar           #+#    #+#             */
-/*   Updated: 2025/01/21 11:54:23 by zayaz            ###   ########.fr       */
+/*   Updated: 2025/01/21 17:05:07 by zayaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,11 @@ int texture_count_check(t_data *data){
     close(fd);
 }
 
-int cub_check(t_data *data){
+int cub_check(t_data *data)
+{
     if(!texture_count_check(data)) 
         return 0;
      if(!map_check(data)) 
         return 0;
+    return(1);
 }
