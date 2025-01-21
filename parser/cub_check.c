@@ -53,7 +53,7 @@ int texture_count_check(t_data *data){
         else if(ft_strncmp(clean_str,"F",ft_strlen(clean_str))){
              data->textures.check_list[F]=1;
         }
-        else if(ft_strncmp(clean_str,"C",ft_strlen(clean_str))){
+        else if(ft_strncmp(clean_str,"Ces",ft_strlen(clean_str))){
              data->textures.check_list[C]=1;
         }
         i++;
