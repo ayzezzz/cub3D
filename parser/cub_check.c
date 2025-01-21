@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
+/*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 17:31:53 by itulgar           #+#    #+#             */
-/*   Updated: 2025/01/20 20:37:16 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/01/21 11:54:23 by zayaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,27 +61,6 @@ int texture_count_check(t_data *data){
     if(!is_fil_textures(data))
         return 0;
     close(fd);
-}
-int map_check(t_data *data)
-{
-    int i = 0;
-    int fd;
-    fd = open(data->path,O_RDONLY);
-    while (1)
-    {
-        data->map.map[i] = get_next_line(fd);
-        if (!data->map.map[i])
-            break ;
-        i++;
-    }
-    close(fd);
-    exit(1);
-    return 0;
-    //wall_check();
-    //player_check();  wrong character 1 0 ' ' S N W E F C
-    //blank_check();
-    // if(data.map[])
-    // eles if()
 }
 
 int cub_check(t_data *data){

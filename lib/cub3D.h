@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
+/*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 18:09:31 by itulgar           #+#    #+#             */
-/*   Updated: 2025/01/20 19:01:07 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/01/21 11:54:39 by zayaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ void file_path_control(char *argv);
 int cub_check(t_data *data);
 int texture_count_check(t_data *data);
 int is_fill_textures(t_data *data);
+int map_check(t_data *data);
 
 #endif
 
