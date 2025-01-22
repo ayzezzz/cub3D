@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 18:09:31 by itulgar           #+#    #+#             */
-/*   Updated: 2025/01/22 14:13:06 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/01/22 14:55:23 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ int texture_count_check(t_data *data);
 int map_check(t_data *data);
 char* find_texture_path(char *clean_str);
 void textures_free(t_data *data);
+int is_xpm_file(t_data *data);
 #endif
 
 

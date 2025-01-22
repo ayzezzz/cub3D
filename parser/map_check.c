@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 11:53:49 by zayaz             #+#    #+#             */
-/*   Updated: 2025/01/22 13:31:40 by zayaz            ###   ########.fr       */
+/*   Updated: 2025/01/22 19:29:02 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,13 +121,14 @@ void player_check(t_data *data)
                 player_count++;
             i++;
         }
-        printf("line:%s\n",line);
+        //printf("line:%s\n",line);
         free(line);
         line = get_next_line(fd);
     }
     if(player_count != 1)
     {
         printf("pl:%d\n",player_count);
+        
         error_message("More than one player found! 🥺\n");
         free(line);
         close(fd);
@@ -166,7 +167,7 @@ int map_check(t_data *data)
     player_check(data);
     //player_position();
     //close(fd);
-    printf("raw: %d", data->map.map_row);
+   // printf("raw: %d", data->map.map_row);
     exit(1);
     return 0;
     // wall_check();
