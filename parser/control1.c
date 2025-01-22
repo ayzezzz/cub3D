@@ -22,9 +22,21 @@ void file_path_control(char *argv)
         if(access(argv,F_OK | R_OK) == 0){
             {
                 fd = open(argv,O_RDONLY);
-                if((str=get_next_line(fd)) == NULL)
+                str = get_next_line(fd);
+                if(str  == NULL)
                     error_message("Empty file 🥺\n");
+                else
+                {
+                    free(str);
+                    while(1)
+                    {
+                        if((str=get_next_line(fd)) == NULL)
+                            break;
+                        free(str);
+                    }
+                }
                 free(str);
+                close(fd);
                 return;
             }
         }
