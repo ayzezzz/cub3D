@@ -6,7 +6,7 @@
 /*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 11:53:49 by zayaz             #+#    #+#             */
-/*   Updated: 2025/01/22 15:05:24 by zayaz            ###   ########.fr       */
+/*   Updated: 2025/01/22 15:19:24 by zayaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,9 +134,5 @@ int map_check(t_data *data)
     printf("raw: %d", data->map.map_row);
     exit(1);
     return 0;
-    // close(fd);
-    // player_position();
-    // wall_check();
-    // blank_check();
-    // fill_map();
+  
 }
