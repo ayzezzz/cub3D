@@ -27,7 +27,8 @@ int main(int argc, char **argv)
             return 0;
         }
     //libx
-    printf("sos");
+    printf("çiktim kips");
+   textures_free(data);
    free(data);
    
 }
