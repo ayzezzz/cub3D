@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 18:09:16 by itulgar           #+#    #+#             */
-/*   Updated: 2025/01/20 17:58:25 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/01/22 14:13:22 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int main(int argc, char **argv)
         }
     //libx
     printf("çiktim kips");
+   textures_free(data);
    free(data);
    
 }

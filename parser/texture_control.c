@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 16:00:45 by itulgar           #+#    #+#             */
-/*   Updated: 2025/01/21 19:18:02 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/01/22 14:34:10 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ static int is_fill_textures(t_data *data)
     int i=0;
     while(i < 6){
         if(data->textures.check_list[i] == 0 || data->textures.check_list[i] != 1 ){
-         free(data);
+           textures_free(data);
+           free(data);
          return error_message("Invalid textures count 🥺\n"),0;   
         } 
         i++;
@@ -37,19 +38,23 @@ static void set_texture(t_data *data,char * clean_str)
 {
     if(clean_str[0] == 'N' && clean_str[1] == 'O' && clean_str[2] == ' '){
         data->textures.check_list[NO]+= 1;
-        find_texture_path(clean_str,data->textures.no);
+        if(data->textures.check_list[NO] == 1)
+            data->textures.no  = find_texture_path(clean_str);
     }
         else if (clean_str[0] == 'S' && clean_str[1] == 'O' && clean_str[2] == ' '){
              data->textures.check_list[SO]+= 1;
-            find_texture_path(clean_str,data->textures.so);
+                if(data->textures.check_list[SO] == 1)
+            data->textures.so  = find_texture_path(clean_str);
         }
         else if(clean_str[0] == 'W' && clean_str[1] == 'E' && clean_str[2] == ' '){
              data->textures.check_list[WE]+= 1;
-            find_texture_path(clean_str,data->textures.we);   
+               if(data->textures.check_list[WE] == 1)
+            data->textures.we  = find_texture_path(clean_str);   
         }
         else if (clean_str[0] == 'E' && clean_str[1] == 'A' && clean_str[2] == ' '){
              data->textures.check_list[EA]+= 1;
-             find_texture_path(clean_str,data->textures.ea);
+            if(data->textures.check_list[EA] == 1)
+            data->textures.ea  = find_texture_path(clean_str);
         }
         else if(clean_str[0] == 'F' && clean_str[1] == ' ')
              data->textures.check_list[F] += 1;
