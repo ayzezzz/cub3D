@@ -6,7 +6,7 @@
 /*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 11:53:49 by zayaz             #+#    #+#             */
-/*   Updated: 2025/01/22 13:31:40 by zayaz            ###   ########.fr       */
+/*   Updated: 2025/01/22 20:34:01 by zayaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,8 @@ void character_check(t_data *data)
     (void)data;
     int fd;
     int i = 0;
-    char *line;
     
+    char *line;
     fd = open(data->path,O_RDONLY);
     line = get_next_line(fd);
     line = go_pass_textures(data, line, fd);
