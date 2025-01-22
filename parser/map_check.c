@@ -6,31 +6,11 @@
 /*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 11:53:49 by zayaz             #+#    #+#             */
-/*   Updated: 2025/01/22 13:31:40 by zayaz            ###   ########.fr       */
+/*   Updated: 2025/01/22 15:05:24 by zayaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../lib/cub3D.h"
-
-void go_gnl_last(int fd, char *line)
-{
-    while(1)
-    {
-        if((line = get_next_line(fd)) == NULL)
-            break;
-    }
-}
-
-int pass_texture(t_data *data, char *line)
-{
-    (void)data;
-   if (line[0] == 'N' || line[0] == 'S' || 
-        line[0] == 'W' || line[0] == 'E' || line[0] == 'F' ||
-        line[0] == 'C' || line[0] == '\n')
-        return(1);
-    return(0);
-
-}
 
 void multi_map_check(int fd)
 {
@@ -48,21 +28,6 @@ void multi_map_check(int fd)
     }
     go_gnl_last(fd, line);
     close(fd);
-}
-
-char *go_pass_textures(t_data *data, char *line, int fd)
-{
-    while(line) 
-    {
-        if(pass_texture(data, line))
-        {
-            free(line);
-            line = get_next_line(fd);
-            continue;
-        }
-        break;   
-    }
-    return(line);
 }
 
 void character_check(t_data *data)
@@ -136,14 +101,9 @@ void player_check(t_data *data)
     close(fd);    
 }
 
-int map_check(t_data *data)
-{
-    int fd;
-    int flag=0;
+void map_row_count(t_data *data, int fd)
+{ 
     char *line;
-
-    fd = open(data->path,O_RDONLY);
-    
     while (1)
     {
         line = get_next_line(fd);
@@ -157,18 +117,25 @@ int map_check(t_data *data)
         if (line[0] == '\n' && data->map.map_row != 0)
             break;
         data->map.map_row++;
-        flag = 1;
         free(line);
     }
     free(line);
+}
+
+int map_check(t_data *data)
+{
+    int fd;
+    fd = open(data->path,O_RDONLY);
+     
+    map_row_count(data, fd);
     multi_map_check(fd);
     character_check(data);
     player_check(data);
-    //player_position();
-    //close(fd);
     printf("raw: %d", data->map.map_row);
     exit(1);
     return 0;
+    // close(fd);
+    // player_position();
     // wall_check();
     // blank_check();
     // fill_map();
