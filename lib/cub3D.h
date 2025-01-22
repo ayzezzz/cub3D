@@ -45,8 +45,9 @@ typedef struct s_player
 
 typedef struct s_map
 {
-     char ** map;
+    char **map;
     char **cpymap;
+    int  map_row;
     
 }t_map;
 
