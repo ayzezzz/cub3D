@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
+/*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 18:09:31 by itulgar           #+#    #+#             */
 /*   Updated: 2025/01/23 12:50:01 by itulgar          ###   ########.fr       */
@@ -70,6 +70,10 @@ char* find_texture_path(t_data *data,char *clean_str);
 void textures_free(t_data *data);
 int is_xpm_file(t_data *data);
 void double_str_free(char **str);
+void go_gnl_last(int fd, char *line);
+int pass_texture(t_data *data, char *line);
+char *go_pass_textures(t_data *data, char *line, int fd);
+
 #endif
 
 
