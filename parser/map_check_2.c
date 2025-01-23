@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_check_2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 15:01:55 by zayaz             #+#    #+#             */
-/*   Updated: 2025/01/23 13:46:29 by zayaz            ###   ########.fr       */
+/*   Updated: 2025/01/23 14:30:44 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,14 @@ int is_textures_top(t_data *data)
             {
                 map_free(data, line, fd);
                 error_message("Textures not found at the top of the map! 🥺\n");
-                return(1);
+                return(0);
             }
             i++;
         }
         free(line);
         line = get_next_line(fd);
     }
-    return(0);
+    return(1);
 }
 
 void    check_line_start_end(t_data *data)
