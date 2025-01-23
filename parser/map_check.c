@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   map_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
+/*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 11:53:49 by zayaz             #+#    #+#             */
-/*   Updated: 2025/01/22 19:29:02 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/01/23 13:46:21 by zayaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../lib/cub3D.h"
-
 
 void multi_map_check(t_data *data, int fd)
 {
@@ -92,16 +91,20 @@ void player_check(t_data *data)
     if(player_count != 1)
     {
         map_free(data, line, fd);
-
         error_message("More than one player found! 🥺\n");
     }
     free(line);
     close(fd);    
 }
 
-void map_row_count(t_data *data, int fd)
-{ 
+int map_check(t_data *data)
+{
+    int fd;
+    int flag=0;
     char *line;
+
+    fd = open(data->path,O_RDONLY);
+    
     while (1)
     {
         line = get_next_line(fd);
@@ -115,27 +118,16 @@ void map_row_count(t_data *data, int fd)
         if (line[0] == '\n' && data->map.map_row != 0)
             break;
         data->map.map_row++;
+        flag = 1;
         free(line);
     }
     free(line);
     multi_map_check(data, fd);
     character_check(data);
     player_check(data);
-    //player_position();
-    //close(fd);
-
-}
-
-int map_check(t_data *data)
-{
-    int fd;
-    fd = open(data->path,O_RDONLY);
-     
-    map_row_count(data, fd);
-    multi_map_check(fd);
-    character_check(data);
-    player_check(data);
-    exit(1);
+    //map_close_check(data);
+    close(fd);
     return 0;
-  
+    //player_position();
+    // fill_map();
 }
