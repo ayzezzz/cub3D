@@ -6,7 +6,7 @@
 /*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 18:09:31 by itulgar           #+#    #+#             */
-/*   Updated: 2025/01/23 12:50:01 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/01/23 13:42:11 by zayaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void double_str_free(char **str);
 void go_gnl_last(int fd, char *line);
 int pass_texture(t_data *data, char *line);
 char *go_pass_textures(t_data *data, char *line, int fd);
+int is_textures_top(t_data *data);
 
 #endif
 
