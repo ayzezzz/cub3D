@@ -6,7 +6,7 @@
 /*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 18:09:31 by itulgar           #+#    #+#             */
-/*   Updated: 2025/01/23 12:11:28 by zayaz            ###   ########.fr       */
+/*   Updated: 2025/01/23 12:50:01 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,13 +66,14 @@ void file_path_control(char *argv);
 int cub_check(t_data *data);
 int texture_count_check(t_data *data);
 int map_check(t_data *data);
-char* find_texture_path(char *clean_str);
+char* find_texture_path(t_data *data,char *clean_str);
 void textures_free(t_data *data);
 void map_free(t_data *data, char *line, int fd);
+int is_xpm_file(t_data *data);
+void double_str_free(char **str);
 void go_gnl_last(int fd, char *line);
 int pass_texture(t_data *data, char *line);
 char *go_pass_textures(t_data *data, char *line, int fd);
-
 
 #endif
 

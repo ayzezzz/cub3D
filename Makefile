@@ -16,6 +16,8 @@ SRCS = cub3d.c\
 		./parser/map_check_2.c\
 		./parser/map_check_3.c
 
+
+
 MLX = ./lib/minilibx_linux/libmlx.a
 OBJS = $(SRCS:.c=.o)
 LIBFT = ./lib/libft/libft.a

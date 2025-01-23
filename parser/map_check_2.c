@@ -83,3 +83,4 @@ void    check_line_start_end(t_data *data)
         line = get_next_line(fd);
     }
 }
+
