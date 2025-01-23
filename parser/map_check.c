@@ -6,7 +6,7 @@
 /*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 11:53:49 by zayaz             #+#    #+#             */
-/*   Updated: 2025/01/23 14:01:58 by zayaz            ###   ########.fr       */
+/*   Updated: 2025/01/23 14:27:16 by zayaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,37 +97,19 @@ void player_check(t_data *data)
     close(fd);    
 }
 
-int map_check(t_data *data)
+void map_row_count(t_data *data, int fd)
 {
-    int fd;
-    int flag=0;
     char *line;
-
     fd = open(data->path,O_RDONLY);
-    
     while (1)
     {
         line = get_next_line(fd);
-        if (!line)
-            break;
-        if(pass_texture(data, line) && data->map.map_row == 0)
-        {
-            free(line);
-            continue;
-        }
         if (line[0] == '\n' && data->map.map_row != 0)
             break;
         data->map.map_row++;
-        flag = 1;
         free(line);
     }
     free(line);
-    multi_map_check(data, fd);
-    character_check(data);
-    player_check(data);
-    //player_position();
-    //close(fd);
-
 }
 
 int map_check(t_data *data)
