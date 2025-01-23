@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 18:39:17 by itulgar           #+#    #+#             */
-/*   Updated: 2025/01/23 13:13:48 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/01/23 13:37:25 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static int xpm_loop(t_data *data,char *path)
     {
             textures_free(data);
             free(data);
-            return error_message("File does not exist or is not readable 🥺\n"),0;
+            return error_message("Not with .xpm extension 🥺\n"),0;
     }
     
 }
