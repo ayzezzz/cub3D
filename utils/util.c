@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   util.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:50:56 by itulgar           #+#    #+#             */
-/*   Updated: 2025/01/22 14:33:08 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/01/23 12:49:34 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,16 @@ void textures_free(t_data *data)
     free(data->textures.we);
     free(data->textures.ea);
     free(data->textures.so);
+}
+
+void double_str_free(char **str)
+{
+    int i;
+    i = 0;
+    while(str[i])
+    {
+        free(str[i]);
+        i++;
+    }
+    free(str);
 }

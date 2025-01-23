@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 18:39:17 by itulgar           #+#    #+#             */
-/*   Updated: 2025/01/22 20:23:10 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/01/23 13:13:48 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ static int is_open_file(char *path)
     int fd;
     int i;
     i = 0;
-    printf("file:%s\n",path);
     fd = open(path,O_RDONLY);
     if(fd < 0)
     {
@@ -62,31 +61,37 @@ int is_xpm_file(t_data *data)
 }
 
 
-char *find_texture_path(char *clean_str)
+char *find_texture_path(t_data *data,char *clean_str)
 {
     int i = 0;
     int start ;
     start = 0;
-    while(clean_str[i] && clean_str[i] == 32)
-        i++;
-    if(clean_str[i] != '.' && (clean_str[i + 1] &&  clean_str[i + 1] != '/'))
-            return error_message("invalid texture character"),NULL;
-    else
+    char **str;
+    char *path;
+    str = ft_split(clean_str,32);
+
+    if(((str[0][0] == '.' && (str[0][1] &&  str[0][1] == '/')) ||  (str[0][0] == '/')) && str[1] == NULL)
     {
-    i = 0;
-    while(clean_str[i])
-    {
-        
-        if(clean_str[i] == '.' && (clean_str[i + 1] &&  clean_str[i + 1] == '/' ))
+        i = 0;
+        while(str[0][i])
         {
-            start = i ;
-            while(clean_str[i] && clean_str[i] != 32)
+            if(((str[0][0] == '.' && (str[0][1] &&  str[0][1] == '/')) ||  (str[0][0] == '/')) && str[1] == NULL)
+            {
+                start = i ;
+                while(str[0][i] && str[0][i] != 32)
+                    i++;
+                path = ft_substr(str[0],start,i);
+                double_str_free(str); 
+                return  path;
+            }            
+            if(str[0][i])
                 i++;
-            return  ft_substr(clean_str,start,i); 
-        }            
-        if(clean_str[i])
-            i++;
-    }    
+        }    
+    }else {
+        double_str_free(str);
+        textures_free(data);
+        free(data);
+        return error_message("invalid character 🥺\n"),NULL;
     }
     return NULL;
 }
