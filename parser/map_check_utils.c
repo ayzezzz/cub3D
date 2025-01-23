@@ -6,7 +6,7 @@
 /*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 14:58:06 by zayaz             #+#    #+#             */
-/*   Updated: 2025/01/22 20:33:37 by zayaz            ###   ########.fr       */
+/*   Updated: 2025/01/23 12:14:32 by zayaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,12 @@ char *go_pass_textures(t_data *data, char *line, int fd)
         break;   
     }
     return(line);
+}
+
+void map_free(t_data *data, char *line, int fd)
+{
+    free(line);
+    free(data);
+    textures_free(data);
+    close(fd);
 }

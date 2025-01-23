@@ -6,42 +6,21 @@
 /*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 11:53:49 by zayaz             #+#    #+#             */
-/*   Updated: 2025/01/22 20:34:01 by zayaz            ###   ########.fr       */
+/*   Updated: 2025/01/23 12:18:40 by zayaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../lib/cub3D.h"
 
-void go_gnl_last(int fd, char *line)
-{
-    while(1)
-    {
-        if((line = get_next_line(fd)) == NULL)
-            break;
-    }
-}
-
-int pass_texture(t_data *data, char *line)
-{
-    (void)data;
-   if (line[0] == 'N' || line[0] == 'S' || 
-        line[0] == 'W' || line[0] == 'E' || line[0] == 'F' ||
-        line[0] == 'C' || line[0] == '\n')
-        return(1);
-    return(0);
-
-}
-
-void multi_map_check(int fd)
+void multi_map_check(t_data *data, int fd)
 {
     char *line;
     while ((line = get_next_line(fd)) != NULL)
     {
         if (line[0] != '\n')
         {   
+            map_free(data, line, fd);
             error_message("Multi map error! 🥺\n");
-            free(line);
-            close(fd);
             break;
         }
         free(line); 
@@ -50,20 +29,6 @@ void multi_map_check(int fd)
     close(fd);
 }
 
-char *go_pass_textures(t_data *data, char *line, int fd)
-{
-    while(line) 
-    {
-        if(pass_texture(data, line))
-        {
-            free(line);
-            line = get_next_line(fd);
-            continue;
-        }
-        break;   
-    }
-    return(line);
-}
 
 void character_check(t_data *data)
 {
@@ -84,9 +49,8 @@ void character_check(t_data *data)
                     line[i] != 'W' && line[i] != 'E' && line[i] != 'F' &&
                     line[i] != 'C' && line[i] != '\n' && line[i] != '0' && line[i] != '1' && line[i] != 32)
             {   
+                map_free(data, line, fd);
                 error_message("Invalid character! 🥺\n");
-                free(line);
-                close(fd);
                 break;
             }
             i++;
@@ -121,16 +85,13 @@ void player_check(t_data *data)
                 player_count++;
             i++;
         }
-        printf("line:%s\n",line);
         free(line);
         line = get_next_line(fd);
     }
     if(player_count != 1)
     {
-        printf("pl:%d\n",player_count);
+        map_free(data, line, fd);
         error_message("More than one player found! 🥺\n");
-        free(line);
-        close(fd);
     }
     free(line);
     close(fd);    
@@ -161,13 +122,11 @@ int map_check(t_data *data)
         free(line);
     }
     free(line);
-    multi_map_check(fd);
+    multi_map_check(data, fd);
     character_check(data);
     player_check(data);
     //player_position();
     //close(fd);
-    printf("raw: %d", data->map.map_row);
-    exit(1);
     return 0;
     // wall_check();
     // blank_check();
