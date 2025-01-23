@@ -13,6 +13,8 @@ SRCS = cub3d.c\
 		./parser/texture_control.c\
 		./parser/format_control.c\
 		./parser/map_check_utils.c\
+		./parser/map_check_2.c\
+		./parser/map_check_3.c
 
 MLX = ./lib/minilibx_linux/libmlx.a
 OBJS = $(SRCS:.c=.o)
