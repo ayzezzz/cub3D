@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
+/*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 11:53:49 by zayaz             #+#    #+#             */
-/*   Updated: 2025/01/22 19:29:02 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/01/23 13:49:50 by zayaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,10 +132,9 @@ int map_check(t_data *data)
     fd = open(data->path,O_RDONLY);
      
     map_row_count(data, fd);
-    multi_map_check(fd);
+    multi_map_check(data, fd);
     character_check(data);
     player_check(data);
-    exit(1);
     return 0;
   
 }
