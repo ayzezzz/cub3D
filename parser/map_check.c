@@ -6,7 +6,7 @@
 /*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 11:53:49 by zayaz             #+#    #+#             */
-/*   Updated: 2025/01/23 13:46:21 by zayaz            ###   ########.fr       */
+/*   Updated: 2025/01/23 13:49:50 by zayaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,20 @@ int map_check(t_data *data)
         free(line);
     }
     free(line);
+    multi_map_check(data, fd);
+    character_check(data);
+    player_check(data);
+    //player_position();
+    //close(fd);
+
+}
+
+int map_check(t_data *data)
+{
+    int fd;
+    fd = open(data->path,O_RDONLY);
+     
+    map_row_count(data, fd);
     multi_map_check(data, fd);
     character_check(data);
     player_check(data);
