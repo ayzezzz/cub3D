@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 20:01:34 by itulgar           #+#    #+#             */
-/*   Updated: 2025/01/22 14:53:42 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/01/23 13:37:21 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void file_path_control(char *argv)
     char *str;
     i = ft_strlen(argv) - 1;
     if(argv[i] == 'b' && argv[i -1] == 'u' && argv[i -2] == 'c' && argv[i-3] == '.'){
+
         //access düzeltin
         if(access(argv,F_OK | R_OK) == 0){
             {
@@ -42,7 +43,7 @@ void file_path_control(char *argv)
             }
         }
         else
-            error_message("File does not exist or is not readable 🥺\n");        
+            error_message("Not with .cub extension 🥺\n");        
     }
            
     else

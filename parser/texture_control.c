@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 16:00:45 by itulgar           #+#    #+#             */
-/*   Updated: 2025/01/23 12:47:01 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/01/23 13:31:26 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ static void set_texture(t_data *data,char * clean_str)
         data->textures.check_list[NO]+= 1;
         if(data->textures.check_list[NO] == 1)
             data->textures.no  = find_texture_path(data,clean_str + 3);
-        printf("no:%s\n",data->textures.no);
     }
         else if (clean_str[0] == 'S' && clean_str[1] == 'O' && clean_str[2] == ' '){
              data->textures.check_list[SO]+= 1;
