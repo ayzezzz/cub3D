@@ -6,7 +6,7 @@
 /*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 15:01:55 by zayaz             #+#    #+#             */
-/*   Updated: 2025/01/23 12:17:00 by zayaz            ###   ########.fr       */
+/*   Updated: 2025/01/23 13:46:29 by zayaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int is_texture_start(char *line, int i)
 }
 
 
-void is_textures_top(t_data *data)
+int is_textures_top(t_data *data)
 {
     char *line;
     int fd;
@@ -42,18 +42,18 @@ void is_textures_top(t_data *data)
         i = 0;
         while (line[i] != '\0')
         {
-            // Yardımcı fonksiyonu çağırıyoruz
             if (line[i] && is_texture_start(line, i))
             {
                 map_free(data, line, fd);
                 error_message("Textures not found at the top of the map! 🥺\n");
-                return;
+                return(1);
             }
             i++;
         }
         free(line);
         line = get_next_line(fd);
     }
+    return(0);
 }
 
 void    check_line_start_end(t_data *data)

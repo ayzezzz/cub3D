@@ -12,7 +12,6 @@
 
 #include "../lib/cub3D.h"
 
-
 void multi_map_check(t_data *data, int fd)
 {
     char *line;
@@ -92,16 +91,20 @@ void player_check(t_data *data)
     if(player_count != 1)
     {
         map_free(data, line, fd);
-
         error_message("More than one player found! 🥺\n");
     }
     free(line);
     close(fd);    
 }
 
-void map_row_count(t_data *data, int fd)
-{ 
+int map_check(t_data *data)
+{
+    int fd;
+    int flag=0;
     char *line;
+
+    fd = open(data->path,O_RDONLY);
+    
     while (1)
     {
         line = get_next_line(fd);
@@ -115,6 +118,7 @@ void map_row_count(t_data *data, int fd)
         if (line[0] == '\n' && data->map.map_row != 0)
             break;
         data->map.map_row++;
+        flag = 1;
         free(line);
     }
     free(line);
@@ -135,6 +139,9 @@ int map_check(t_data *data)
     multi_map_check(data, fd);
     character_check(data);
     player_check(data);
+    //map_close_check(data);
+    close(fd);
     return 0;
-  
+    //player_position();
+    // fill_map();
 }
