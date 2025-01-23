@@ -6,7 +6,7 @@
 /*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 11:53:49 by zayaz             #+#    #+#             */
-/*   Updated: 2025/01/23 14:00:41 by zayaz            ###   ########.fr       */
+/*   Updated: 2025/01/23 14:01:58 by zayaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,6 +139,8 @@ int map_check(t_data *data)
     multi_map_check(data, fd);
     character_check(data);
     player_check(data);
+    //as
+    //map_closed_check();
     //map_close_check(data);
     close(fd);
     return 0;
