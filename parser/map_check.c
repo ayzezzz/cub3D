@@ -12,16 +12,16 @@
 
 #include "../lib/cub3D.h"
 
-void multi_map_check(int fd)
+
+void multi_map_check(t_data *data, int fd)
 {
     char *line;
     while ((line = get_next_line(fd)) != NULL)
     {
         if (line[0] != '\n')
         {   
+            map_free(data, line, fd);
             error_message("Multi map error! 🥺\n");
-            free(line);
-            close(fd);
             break;
         }
         free(line); 
@@ -30,13 +30,14 @@ void multi_map_check(int fd)
     close(fd);
 }
 
+
 void character_check(t_data *data)
 {
     (void)data;
     int fd;
     int i = 0;
-    char *line;
     
+    char *line;
     fd = open(data->path,O_RDONLY);
     line = get_next_line(fd);
     line = go_pass_textures(data, line, fd);
@@ -49,9 +50,8 @@ void character_check(t_data *data)
                     line[i] != 'W' && line[i] != 'E' && line[i] != 'F' &&
                     line[i] != 'C' && line[i] != '\n' && line[i] != '0' && line[i] != '1' && line[i] != 32)
             {   
+                map_free(data, line, fd);
                 error_message("Invalid character! 🥺\n");
-                free(line);
-                close(fd);
                 break;
             }
             i++;
@@ -86,17 +86,14 @@ void player_check(t_data *data)
                 player_count++;
             i++;
         }
-        //printf("line:%s\n",line);
         free(line);
         line = get_next_line(fd);
     }
     if(player_count != 1)
     {
-        printf("pl:%d\n",player_count);
-        
+        map_free(data, line, fd);
+
         error_message("More than one player found! 🥺\n");
-        free(line);
-        close(fd);
     }
     free(line);
     close(fd);    
@@ -121,6 +118,12 @@ void map_row_count(t_data *data, int fd)
         free(line);
     }
     free(line);
+    multi_map_check(data, fd);
+    character_check(data);
+    player_check(data);
+    //player_position();
+    //close(fd);
+
 }
 
 int map_check(t_data *data)
@@ -132,7 +135,6 @@ int map_check(t_data *data)
     multi_map_check(fd);
     character_check(data);
     player_check(data);
-    printf("raw: %d", data->map.map_row);
     exit(1);
     return 0;
   

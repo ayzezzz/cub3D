@@ -68,6 +68,7 @@ int texture_count_check(t_data *data);
 int map_check(t_data *data);
 char* find_texture_path(t_data *data,char *clean_str);
 void textures_free(t_data *data);
+void map_free(t_data *data, char *line, int fd);
 int is_xpm_file(t_data *data);
 void double_str_free(char **str);
 void go_gnl_last(int fd, char *line);
