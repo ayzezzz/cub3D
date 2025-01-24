@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_control.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
+/*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 16:00:45 by itulgar           #+#    #+#             */
-/*   Updated: 2025/01/24 13:42:17 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/01/24 14:01:07 by zayaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,14 @@ static void set_texture(t_data *data,char * clean_str)
             if(data->textures.check_list[EA] == 1)
             data->textures.ea  = find_texture_path(data,clean_str + 3);
         }
-        else if((clean_str[0] == 'F' && clean_str[1] == ' ') && (data->textures.check_list[F] += 1))
-            data->textures.f = find_color_num(data,clean_str + 3);
-        else if((clean_str[0] == 'C' && clean_str[1]  ==  ' ') && (data->textures.check_list[C] += 1))
-                data->textures.c = find_color_num(data,clean_str + 3);
+        else if((clean_str[0] == 'F' && clean_str[1] == ' ')){
+            data->textures.check_list[F] += 1;
+            //data->textures.f = find_color_num(data,clean_str + 3);
+        }
+        else if((clean_str[0] == 'C' && clean_str[1]  ==  ' ')){
+            data->textures.check_list[C] += 1;
+            //data->textures.c = find_color_num(data,clean_str + 3);
+        }
 }
 
 static int texture_loop(t_data *data, int *i, char*str, int fd)
