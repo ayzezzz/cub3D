@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 11:53:49 by zayaz             #+#    #+#             */
-/*   Updated: 2025/01/23 19:14:50 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/01/24 12:31:35 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void character_check(t_data *data)
     char *line;
     fd = open(data->path,O_RDONLY);
     line = get_next_line(fd);
-    line = go_pass_textures(data, line, fd);
+    line = go_pass_textures(line, fd);
     while(line)
     {
         i = 0;
@@ -79,7 +79,7 @@ void player_check(t_data *data)
     player_count = 0;
     fd = open(data->path, O_RDONLY);
     line = get_next_line(fd); 
-    line = go_pass_textures(data, line, fd);
+    line = go_pass_textures(line, fd);
     while(line)
     {
         i = 0;
@@ -108,7 +108,7 @@ void map_row_count(t_data *data, int fd)
     char *line = NULL;
     fd = open(data->path,O_RDONLY);
     line = get_next_line(fd);
-    line = go_pass_textures(data, line, fd);
+    line = go_pass_textures( line, fd);
     while (1)
     {
         if ((line == NULL) || (line[0] == '\n' && data->map.map_row != 0))

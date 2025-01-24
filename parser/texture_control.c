@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 16:00:45 by itulgar           #+#    #+#             */
-/*   Updated: 2025/01/23 19:33:26 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/01/24 12:17:11 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int texture_count_check(t_data *data)
                 i++;
             }
             if(!is_fill_textures(data))
-                return error_message("Texture wrong format"),0; 
+                return error_message("Texture wrong format 🥺\n"),0; 
         }
         set_texture(data,clean_str);
         free(str);

@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 18:39:17 by itulgar           #+#    #+#             */
-/*   Updated: 2025/01/23 19:47:48 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/01/24 12:12:17 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,6 @@ static int xpm_loop(t_data *data,char *path)
 {
     size_t i ;
     i = 0;
-    //buraya bir daha bak.burada bir şeyleri karıştırdın
-    if(!path)
-        return 0;
     i = ft_strlen(path) -1;
     if(path[i] == 'm' && path[i - 1] == 'p' && path[i - 2] == 'x' && path[i - 3] == '.')
     {
@@ -83,7 +80,7 @@ static char *is_xpm_check(char **str,char *path)
         if(str[0][i])
             i++;
     }
-    return NULL; 
+    return path; 
 }
 
 char *find_texture_path(t_data *data,char *clean_str)
@@ -92,7 +89,6 @@ char *find_texture_path(t_data *data,char *clean_str)
     char **str;
 
     str = ft_split(clean_str,32);
-
     if(((str[0][0] == '.' && (str[0][1] &&  str[0][1] == '/')) ||  (str[0][0] == '/')) && str[1] == NULL)
         path = is_xpm_check(str,path);
     if(!path)
@@ -102,6 +98,6 @@ char *find_texture_path(t_data *data,char *clean_str)
         free(data);
         return error_message("invalid character 🥺\n"),NULL;
     }
-    return NULL;
+    return path;
 }
 
