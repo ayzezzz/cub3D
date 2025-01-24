@@ -117,7 +117,6 @@ void map_row_count(t_data *data, int fd)
         free(line);
         line = get_next_line(fd);
     }
-  
 }
 // int map_check(t_data *data)
 // {
@@ -161,6 +160,8 @@ int map_check(t_data *data)
    // multi_map_check(data, fd);
     character_check(data);
     player_check(data);
+    //as
+    //map_closed_check();
     //map_close_check(data);
     close(fd);
     return 1;
