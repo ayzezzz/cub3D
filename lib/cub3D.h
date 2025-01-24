@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 18:09:31 by itulgar           #+#    #+#             */
-/*   Updated: 2025/01/24 12:30:44 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/01/24 13:41:49 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void double_str_free(char **str);
 void go_gnl_last(int fd, char *line);
 char *go_pass_textures( char *line, int fd);
 int is_textures_top(t_data *data);
-
+char **find_color_num(t_data *data,char* clean_str);
 #endif
 
 

@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 11:53:49 by zayaz             #+#    #+#             */
-/*   Updated: 2025/01/24 12:31:35 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/01/24 13:26:39 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,6 @@ void map_row_count(t_data *data, int fd)
         free(line);
         line = get_next_line(fd);
     }
-   // printf("row:%d:\n",data->map.map_row);
   
 }
 // int map_check(t_data *data)
@@ -164,7 +163,7 @@ int map_check(t_data *data)
     player_check(data);
     //map_close_check(data);
     close(fd);
-    return 0;
+    return 1;
     //player_position();
     // fill_map();
 }
