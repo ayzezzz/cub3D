@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   util.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
+/*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:50:56 by itulgar           #+#    #+#             */
-/*   Updated: 2025/01/23 19:34:36 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/01/24 15:54:05 by zayaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,11 @@ void double_str_free(char **str)
 {
     int i;
     i = 0;
-    while(str[i])
+    while(str && str[i])
     {
         free(str[i]);
         i++;
     }
-    free(str);
+    if(str)
+        free(str);
 }

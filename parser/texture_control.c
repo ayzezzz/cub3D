@@ -6,7 +6,7 @@
 /*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 16:00:45 by itulgar           #+#    #+#             */
-/*   Updated: 2025/01/24 14:01:07 by zayaz            ###   ########.fr       */
+/*   Updated: 2025/01/24 15:36:50 by zayaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static void set_texture(t_data *data,char * clean_str)
 
 static int texture_loop(t_data *data, int *i, char*str, int fd)
 {
-    while(*i < data->map.map_row)
+    while(*i < data->cub_map.map_row)
     {
         free(str);
         str = get_next_line(fd);
