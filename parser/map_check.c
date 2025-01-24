@@ -6,7 +6,7 @@
 /*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 11:53:49 by zayaz             #+#    #+#             */
-/*   Updated: 2025/01/24 17:18:27 by zayaz            ###   ########.fr       */
+/*   Updated: 2025/01/24 20:27:49 by zayaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,7 @@ void map_row_count(t_data *data, int fd)
         free(line);
         line = get_next_line(fd);
     }
+    //printf("row:%d\n",data->cub_map.map_row);
 }
 
 int map_check(t_data *data)
@@ -132,9 +133,9 @@ int map_check(t_data *data)
     character_check(data);
     player_check(data);
     fill_map(data);
+    map_close_check(data);
     close(fd);
     return 1;
-    //map_close_check(data);
    //multi_map_check(data, fd);
     //player_position();
 }

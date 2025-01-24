@@ -6,7 +6,7 @@
 /*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 18:09:16 by itulgar           #+#    #+#             */
-/*   Updated: 2025/01/24 17:12:36 by zayaz            ###   ########.fr       */
+/*   Updated: 2025/01/24 17:38:40 by zayaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ int main(int argc, char **argv)
             return 0;
         }
     //libx
-    printf("çiktim kips");
    double_str_free(data->cub_map.map);
    double_str_free(data->cub_map.cpymap);
    textures_free(data);
