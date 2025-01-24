@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_control.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 16:00:45 by itulgar           #+#    #+#             */
-/*   Updated: 2025/01/24 15:36:50 by zayaz            ###   ########.fr       */
+/*   Updated: 2025/01/24 17:30:17 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,11 @@ static void set_texture(t_data *data,char * clean_str)
         }
         else if((clean_str[0] == 'F' && clean_str[1] == ' ')){
             data->textures.check_list[F] += 1;
-            //data->textures.f = find_color_num(data,clean_str + 3);
+            find_color_num(data,clean_str + 3);
         }
         else if((clean_str[0] == 'C' && clean_str[1]  ==  ' ')){
             data->textures.check_list[C] += 1;
-            //data->textures.c = find_color_num(data,clean_str + 3);
+            find_color_num(data,clean_str + 3);
         }
 }
 
