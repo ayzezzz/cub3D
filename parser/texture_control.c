@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 16:00:45 by itulgar           #+#    #+#             */
-/*   Updated: 2025/01/23 13:31:26 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/01/24 12:17:11 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,15 @@ static void init_check_list(t_data *data)
 
 static int is_fill_textures(t_data *data)
 {
-    int i=0;
-    while(i < 6){
-        if(data->textures.check_list[i] == 0 || data->textures.check_list[i] != 1 ){
+    int i;
+    i = 0;
+    while(i < 6)
+    {
+        if(data->textures.check_list[i] == 0 || data->textures.check_list[i] > 1 )
+        {
            textures_free(data);
            free(data);
-         return error_message("Invalid textures count 🥺\n"),0;   
+           return 0;   
         } 
         i++;
     }
@@ -68,18 +71,31 @@ int texture_count_check(t_data *data)
    char *str;
    char *clean_str;
    int fd ;
+   int i;
+   i = 0;
    init_check_list(data);
    fd=open(data->path,O_RDONLY);
    while ((str = get_next_line(fd)))
     {
         clean_str = ft_strtrim(str," \n");
+        if(clean_str[0] == '0' || clean_str[0] == '1')
+        {
+            while(i < data->map.map_row)
+            {
+                free(str);
+                str = get_next_line(fd);
+                i++;
+            }
+            if(!is_fill_textures(data))
+                return error_message("Texture wrong format 🥺\n"),0; 
+        }
         set_texture(data,clean_str);
         free(str);
         free(clean_str);
     }
     close(fd);
     if(!is_fill_textures(data))
-        return 0;
+        return error_message("Invalid textures count 🥺\n"),0;
 
     return 1;
 }
