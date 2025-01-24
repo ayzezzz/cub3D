@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 14:58:06 by zayaz             #+#    #+#             */
-/*   Updated: 2025/01/24 12:30:32 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/01/24 13:14:15 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ char *go_pass_textures( char *line, int fd)
             line = get_next_line(fd);
             continue;
         }
+        free(str);
         break;   
     }
     return(line);
