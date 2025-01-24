@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 16:00:45 by itulgar           #+#    #+#             */
-/*   Updated: 2025/01/24 17:30:17 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/01/24 17:35:05 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,14 +59,10 @@ static void set_texture(t_data *data,char * clean_str)
             if(data->textures.check_list[EA] == 1)
             data->textures.ea  = find_texture_path(data,clean_str + 3);
         }
-        else if((clean_str[0] == 'F' && clean_str[1] == ' ')){
-            data->textures.check_list[F] += 1;
+        else if((clean_str[0] == 'F' && clean_str[1] == ' ') && (data->textures.check_list[F] += 1))
             find_color_num(data,clean_str + 3);
-        }
-        else if((clean_str[0] == 'C' && clean_str[1]  ==  ' ')){
-            data->textures.check_list[C] += 1;
+        else if((clean_str[0] == 'C' && clean_str[1]  ==  ' ') && (data->textures.check_list[C] += 1))
             find_color_num(data,clean_str + 3);
-        }
 }
 
 static int texture_loop(t_data *data, int *i, char*str, int fd)
