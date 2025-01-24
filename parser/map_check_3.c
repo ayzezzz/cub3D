@@ -6,7 +6,7 @@
 /*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 13:38:03 by zayaz             #+#    #+#             */
-/*   Updated: 2025/01/23 14:14:35 by zayaz            ###   ########.fr       */
+/*   Updated: 2025/01/24 14:03:38 by zayaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int find_height(t_data *data)
     height = 0;
     fd = open(data->path, O_RDONLY);
     line = get_next_line(fd); 
-    line = go_pass_textures(data, line, fd);
+    line = go_pass_textures(line, fd);
 
     while(line)
     {
