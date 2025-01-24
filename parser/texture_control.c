@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 16:00:45 by itulgar           #+#    #+#             */
-/*   Updated: 2025/01/23 12:47:01 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/01/24 13:42:17 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,15 @@ static void init_check_list(t_data *data)
 
 static int is_fill_textures(t_data *data)
 {
-    int i=0;
-    while(i < 6){
-        if(data->textures.check_list[i] == 0 || data->textures.check_list[i] != 1 ){
+    int i;
+    i = 0;
+    while(i < 6)
+    {
+        if(data->textures.check_list[i] == 0 || data->textures.check_list[i] > 1 )
+        {
            textures_free(data);
            free(data);
-         return error_message("Invalid textures count 🥺\n"),0;   
+           return 0;   
         } 
         i++;
     }
@@ -40,7 +43,6 @@ static void set_texture(t_data *data,char * clean_str)
         data->textures.check_list[NO]+= 1;
         if(data->textures.check_list[NO] == 1)
             data->textures.no  = find_texture_path(data,clean_str + 3);
-        printf("no:%s\n",data->textures.no);
     }
         else if (clean_str[0] == 'S' && clean_str[1] == 'O' && clean_str[2] == ' '){
              data->textures.check_list[SO]+= 1;
@@ -57,11 +59,25 @@ static void set_texture(t_data *data,char * clean_str)
             if(data->textures.check_list[EA] == 1)
             data->textures.ea  = find_texture_path(data,clean_str + 3);
         }
-        else if(clean_str[0] == 'F' && clean_str[1] == ' ')
-             data->textures.check_list[F] += 1;
-        else if(clean_str[0] == 'C' && clean_str[1]  ==  ' ')
-             data->textures.check_list[C] += 1;
+        else if((clean_str[0] == 'F' && clean_str[1] == ' ') && (data->textures.check_list[F] += 1))
+            data->textures.f = find_color_num(data,clean_str + 3);
+        else if((clean_str[0] == 'C' && clean_str[1]  ==  ' ') && (data->textures.check_list[C] += 1))
+                data->textures.c = find_color_num(data,clean_str + 3);
 }
+
+static int texture_loop(t_data *data, int *i, char*str, int fd)
+{
+    while(*i < data->map.map_row)
+    {
+        free(str);
+        str = get_next_line(fd);
+        (*i)++;
+    }
+    if(!is_fill_textures(data))
+        return error_message("Texture wrong format 🥺\n"),0; 
+    return 1;
+}
+
 
 int texture_count_check(t_data *data)
 {
@@ -69,18 +85,21 @@ int texture_count_check(t_data *data)
    char *str;
    char *clean_str;
    int fd ;
+   int i;
+   i = 0;
    init_check_list(data);
    fd=open(data->path,O_RDONLY);
    while ((str = get_next_line(fd)))
     {
         clean_str = ft_strtrim(str," \n");
+        if((clean_str[0] == '0' || clean_str[0] == '1') &&  !texture_loop(data,&i,str,fd))
+            return 0;
         set_texture(data,clean_str);
         free(str);
         free(clean_str);
     }
     close(fd);
     if(!is_fill_textures(data))
-        return 0;
-
+        return error_message("Invalid textures count 🥺\n"),0;
     return 1;
 }
