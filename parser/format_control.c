@@ -15,8 +15,8 @@
 static int is_open_file(char *path)
 {
     int fd;
-    int i;
-    i = 0;
+    // int i;
+    // i = 0;
     fd = open(path,O_RDONLY);
 
     if(fd < 0)

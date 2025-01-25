@@ -14,31 +14,30 @@
 
 void go_gnl_last(int fd, char *line)
 {
-    while(1)
+    while (1)
     {
-        if((line = get_next_line(fd)) == NULL)
+        if ((line = get_next_line(fd)) == NULL)
             break;
     }
 }
 
-int pass_texture(char *line)
+static int pass_texture(char *line)
 {
-    if (line[0] == 'N' || line[0] == 'S' || 
+    if (line[0] == 'N' || line[0] == 'S' ||
         line[0] == 'W' || line[0] == 'E' || line[0] == 'F' ||
         line[0] == 'C' || line[0] == '\n')
-        return(1);
-    return(0);
-
+        return (1);
+    return (0);
 }
 
-char *go_pass_textures( char *line, int fd)
+char *go_pass_textures(char *line, int fd)
 {
     char *str;
-    
-    while(line) 
+
+    while (line)
     {
-      str = ft_strtrim(line," ");   
-        if(pass_texture(str))
+        str = ft_strtrim(line, " ");
+        if (pass_texture(str))
         {
             free(str);
             free(line);
@@ -46,9 +45,9 @@ char *go_pass_textures( char *line, int fd)
             continue;
         }
         free(str);
-        break;   
+        break;
     }
-    return(line);
+    return (line);
 }
 
 void map_free(t_data *data, char *line, int fd)
@@ -57,4 +56,13 @@ void map_free(t_data *data, char *line, int fd)
     textures_free(data);
     free(data);
     close(fd);
+}
+
+void free_b_map(char **b_map, size_t max_row)
+{
+    for (size_t i = 0; i < max_row; i++)
+    {
+        free(b_map[i]);
+    }
+    free(b_map);
 }

@@ -35,21 +35,21 @@ typedef struct s_textures
     char **f;
     char **c;
     int check_list[6];
-    
-}t_textures;
+
+} t_textures;
 
 typedef struct s_player
 {
 
-}t_player;
+} t_player;
 
 typedef struct s_map
 {
     char **map;
     char **cpymap;
-    int  map_row;
-    
-}t_map;
+    int map_row;
+
+} t_map;
 
 typedef struct s_data
 {
@@ -57,27 +57,29 @@ typedef struct s_data
     t_map cub_map;
     char *path;
     t_player player;
-    
 
-}t_data;
+} t_data;
 
 void error_message(char *str);
 void file_path_control(char *argv);
 int cub_check(t_data *data);
 int texture_count_check(t_data *data);
 int map_check(t_data *data);
-char* find_texture_path(t_data *data,char *clean_str);
+char *find_texture_path(t_data *data, char *clean_str);
 void textures_free(t_data *data);
 void map_free(t_data *data, char *line, int fd);
 int is_xpm_file(t_data *data);
 void double_str_free(char **str);
 void go_gnl_last(int fd, char *line);
-char *go_pass_textures( char *line, int fd);
+char *go_pass_textures(char *line, int fd);
 int is_textures_top(t_data *data);
-char **find_color_num(t_data *data,char* clean_str);
+char **find_color_num(t_data *data, char *clean_str);
 void map_close_check(t_data *data);
+int is_there_char(char *line);
+void free_b_map(char **b_map, size_t max_row);
+int max_row_lenght(t_data *data);
+int max_col_length(t_data *data);
+void character_check(t_data *data);
+void player_check(t_data *data);
 
 #endif
-
-
-
