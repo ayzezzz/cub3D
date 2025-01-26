@@ -5,7 +5,7 @@ char **B_map(char **map)
     //1111
     //1001
     //1011
-    //111
+    //110
 
     int yüksek = findyüksek(); //4
     int geniş = findgeniş(); //4
@@ -36,7 +36,7 @@ char **B_map(char **map)
     //B1111B
     //B1001B
     //B1011B
-    //B111BB
+    //B110BB
     //BBBBBB
 
     for (int i = 0; i < yüksek; i++)

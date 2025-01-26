@@ -1,86 +1,75 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   map_check_2.c                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/22 15:01:55 by zayaz             #+#    #+#             */
-/*   Updated: 2025/01/23 14:30:44 by itulgar          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "../lib/cub3D.h"
 
-static int is_texture_start(char *line, int i)
+static void check_line_for_invalid_chars(t_data *data, char *line, int fd)
 {
-    if (((line[i] == 'N' && line[i + 1] == 'O') || 
-         (line[i] == 'S' && line[i + 1] == 'O') ||
-         (line[i] == 'W' && line[i + 1] == 'E') || 
-         (line[i] == 'E' && line[i + 1] == 'A')) && line[i + 2] != ' ')
-        return 1;
+    int i = 0;
 
-    if ((line[i] == 'F' || line[i] == 'C') && line[i + 1] != ' ')
-        return 1;
-
-    return 0;
-}
-
-
-int is_textures_top(t_data *data)
-{
-    char *line;
-    int fd;
-    int i;
-
-    i = 0;
-    fd = open(data->path, O_RDONLY);
-    line = get_next_line(fd);
-    
-    while (line)
+    while (line[i] != '\0')
     {
-        i = 0;
-        while (line[i] != '\0')
+        if (line[i] != 'N' && line[i] != 'S' && line[i] != 'W' && line[i] != 'E' &&
+            line[i] != '\n' && line[i] != '0' && line[i] != '1' && line[i] != 32)
         {
-            if (line[i] && is_texture_start(line, i))
-            {
-                map_free(data, line, fd);
-                error_message("Textures not found at the top of the map! 🥺\n");
-                return(0);
-            }
-            i++;
+            map_free(data, line, fd);
+            error_message("Invalid character! 🥺\n");
+            return;
         }
-        free(line);
-        line = get_next_line(fd);
-    }
-    return(1);
-}
-
-void    check_line_start_end(t_data *data)
-{
-    char *line;
-    int fd;
-    int i;
-
-    i = 0;
-    fd = open(data->path, O_RDONLY);
-    line = get_next_line(fd);
-    
-    while (line)
-    {
-        i = 0;
-        while (line[i] != '\0')
-        {
-            if (line[i] && (line[i] != 32 && line [i] != 1))
-            {
-                map_free(data, line, fd);
-                error_message("Map not closed! 🥺\n");
-                return;
-            }
-            i++;
-        }
-        free(line);
-        line = get_next_line(fd);
+        i++;
     }
 }
 
+void character_check(t_data *data)
+{
+    char *line;
+    int fd = open(data->path, O_RDONLY);
+
+    line = get_next_line(fd);
+    line = go_pass_textures(line, fd);
+
+    while (line)
+    {
+        check_line_for_invalid_chars(data, line, fd);
+        free(line);
+        line = get_next_line(fd);
+    }
+
+    go_gnl_last(fd, line);
+    close(fd);
+}
+
+static void count_players_in_line(char *line, int *player_count)
+{
+    int i = 0;
+
+    while (line[i] != '\0')
+    {
+        if (line[i] == 'N' || line[i] == 'S' || line[i] == 'W' || line[i] == 'E')
+            (*player_count)++;
+        i++;
+    }
+}
+
+void player_check(t_data *data)
+{
+    int player_count = 0;
+    char *line;
+    int fd = open(data->path, O_RDONLY);
+
+    line = get_next_line(fd);
+    line = go_pass_textures(line, fd);
+
+    while (line)
+    {
+        count_players_in_line(line, &player_count);
+        free(line);
+        line = get_next_line(fd);
+    }
+
+    if (player_count != 1)
+    {
+        map_free(data, line, fd);
+        error_message("More than one player found! 🥺\n");
+    }
+    free(line);
+    close(fd);
+}
