@@ -15,7 +15,8 @@ SRCS = cub3d.c\
 		./parser/map_check_utils.c\
 		./parser/map_check_2.c\
 		./parser/map_check_3.c\
-		./parser/texture_control_2.c
+		./parser/texture_control_2.c\
+		./parser/map_check_4.c
 
 
 

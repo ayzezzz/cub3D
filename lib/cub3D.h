@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 18:09:31 by itulgar           #+#    #+#             */
 /*   Updated: 2025/01/24 17:34:58 by zayaz            ###   ########.fr       */
@@ -40,6 +40,8 @@ typedef struct s_textures
 
 typedef struct s_player
 {
+    int p_x;
+    int p_y;
 
 } t_player;
 
@@ -73,6 +75,8 @@ void double_str_free(char **str);
 void go_gnl_last(int fd, char *line);
 char *go_pass_textures(char *line, int fd);
 int is_textures_top(t_data *data);
+void player_loc(t_data *data);
+int is_game_played(t_data *data);
 char **find_color_num(t_data *data, char *clean_str);
 void map_close_check(t_data *data);
 int is_there_char(char *line);
@@ -81,5 +85,6 @@ int max_row_lenght(t_data *data);
 int max_col_length(t_data *data);
 void character_check(t_data *data);
 void player_check(t_data *data);
+
 
 #endif
