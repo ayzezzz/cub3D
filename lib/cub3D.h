@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 18:09:31 by itulgar           #+#    #+#             */
-/*   Updated: 2025/01/24 17:33:49 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/01/24 18:09:37 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ typedef struct s_textures
 
 typedef struct s_player
 {
+    int p_x;
+    int p_y;
 
 }t_player;
 
@@ -75,6 +77,8 @@ void go_gnl_last(int fd, char *line);
 char *go_pass_textures( char *line, int fd);
 int is_textures_top(t_data *data);
 void find_color_num(t_data *data,char* clean_str);
+void player_loc(t_data *data);
+int is_game_played(t_data *data);
 #endif
 
 
