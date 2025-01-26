@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 20:01:34 by itulgar           #+#    #+#             */
-/*   Updated: 2025/01/23 19:30:53 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/01/26 11:53:54 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int is_cub_extension(char *path)
     
     fd = open(path,O_RDONLY);
     if(fd < 0) 
-        return error_message("File Path Error 🥺\n"),0;   
+        return error_message("File Error 🥺\n"),0;   
     close(fd);
     i = ft_strlen(path) - 1;
      if(!(path[i] == 'b' && path[i -1] == 'u' && path[i -2] == 'c' && path[i-3] == '.'))

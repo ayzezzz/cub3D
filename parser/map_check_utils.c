@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 14:58:06 by zayaz             #+#    #+#             */
-/*   Updated: 2025/01/24 13:14:15 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/01/26 14:40:54 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,12 @@ void go_gnl_last(int fd, char *line)
 {
     while (1)
     {
-        if ((line = get_next_line(fd)) == NULL)
+        line = get_next_line(fd);
+        if (line  == NULL)
             break;
+        free(line);
     }
+    free(line);
 }
 
 static int pass_texture(char *line)
@@ -58,11 +61,12 @@ void map_free(t_data *data, char *line, int fd)
     close(fd);
 }
 
-void free_b_map(char **b_map, size_t max_row)
+void free_data(t_data *data)
 {
-    for (size_t i = 0; i < max_row; i++)
-    {
-        free(b_map[i]);
-    }
-    free(b_map);
+    textures_free(data);
+    double_str_free(data->cub_map.b_map);
+    double_str_free(data->cub_map.map);
+    double_str_free(data->cub_map.cpymap);
+
+    free(data);
 }

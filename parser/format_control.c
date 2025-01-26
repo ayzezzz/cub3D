@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 18:39:17 by itulgar           #+#    #+#             */
-/*   Updated: 2025/01/24 12:12:17 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/01/26 12:27:45 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 static int is_open_file(char *path)
 {
     int fd;
-    // int i;
-    // i = 0;
     fd = open(path,O_RDONLY);
 
     if(fd < 0)
@@ -39,7 +37,7 @@ static int xpm_loop(t_data *data,char *path)
         {
             textures_free(data);
             free(data);
-            return  error_message("unopenable xpm extension 🥺\n"),0;
+            return  error_message("Not open file 🥺\n"),0;
         }else
             return 1;
     }

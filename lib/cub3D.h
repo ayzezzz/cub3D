@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 18:09:31 by itulgar           #+#    #+#             */
-/*   Updated: 2025/01/24 17:34:58 by zayaz            ###   ########.fr       */
+/*   Updated: 2025/01/26 18:06:33 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct s_player
 typedef struct s_map
 {
     char **map;
+    char **b_map;
     char **cpymap;
     int map_row;
 
@@ -74,17 +75,15 @@ int is_xpm_file(t_data *data);
 void double_str_free(char **str);
 void go_gnl_last(int fd, char *line);
 char *go_pass_textures(char *line, int fd);
-int is_textures_top(t_data *data);
 void player_loc(t_data *data);
-int is_game_played(t_data *data);
-char **find_color_num(t_data *data, char *clean_str);
+void find_color_num(t_data *data, char *clean_str);
 void map_close_check(t_data *data);
 int is_there_char(char *line);
-void free_b_map(char **b_map, size_t max_row);
 int max_row_lenght(t_data *data);
 int max_col_length(t_data *data);
 void character_check(t_data *data);
 void player_check(t_data *data);
-
+void free_data(t_data *data);
+void flood_fill_check(t_data *data);
 
 #endif
