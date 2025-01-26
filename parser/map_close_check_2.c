@@ -54,6 +54,5 @@ int max_col_length(t_data *data)
 
     if (end >= start)
         max_col = end - start + 1;
-
     return max_col;
 }

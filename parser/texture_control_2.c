@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 13:39:54 by itulgar           #+#    #+#             */
-/*   Updated: 2025/01/24 17:19:20 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/01/26 13:34:33 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,31 @@ static int is_invalid_character(char *clean_str)
     {
         if(!(clean_str[i] >='0' && clean_str[i] <='9') && clean_str[i] != 32 && clean_str[i] != ',')
             return 0;
+        if(clean_str[i]==32)
+        {
+            while(clean_str[i] == 32)
+                i++;
+            if(clean_str[i] == ',')
+                return 0;
+        }
         i++;
     }
     return 1;
 }
 
+
+static void  comma_in_fill(t_data *data,char **int_str){
+    int i;
+    i = 0;
+    while(int_str[i])
+        i++;
+    if(i != 3)
+    {  
+        textures_free(data);
+        free(data);
+        error_message("Color format error! 🥺\n");
+    }
+}
 
 void find_color_num(t_data *data,char* clean_str)
 {
@@ -53,15 +73,16 @@ void find_color_num(t_data *data,char* clean_str)
     if(!is_two_comma(clean_str) || !is_invalid_character(clean_str)){
         textures_free(data);
         free(data);
-        error_message("Color format error 🥺\n");
+        error_message("Color format error! 🥺\n");
     }
     int_str = ft_split(clean_str,',');
+    comma_in_fill(data,int_str);
     
     while(i < 3){
-        num = ft_atoi(int_str[i]);
-        tmp = ft_strtrim(int_str[i]," \n");
+        tmp = ft_strtrim(int_str[i]," \n"); 
+        num = ft_atoi(tmp);
         if (ft_strlen(tmp) > 3 || !(num >= 0  && num <= 255))
-            error_message("Must be in 0- 255 format 🥺\n");
+            error_message("Must be in 0 - 255 format! 🥺\n");
         free(tmp);
         i++;
     } 
