@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 17:56:19 by itulgar           #+#    #+#             */
-/*   Updated: 2025/01/26 19:27:24 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/01/27 15:37:35 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void player_loc(t_data *data)
             if(data->cub_map.map[x][y] == 'N' || data->cub_map.map[x][y] == 'S' || data->cub_map.map[x][y] == 'E' || data->cub_map.map[x][y] == 'W'){
                 data->player.p_x = x;
                 data->player.p_y = y;
+                data->player.p_dir = data->cub_map.map[x][y];
             }
             y++;
         }
@@ -56,12 +57,6 @@ void flood_fill_check(t_data *data)
     y = 0;
 
     flood_fill(data, data->player.p_x, data->player.p_y);
-    int i;
-     i = 0;
-    while(data->cub_map.b_map[i]){
-        printf("b_map: %s\n",data->cub_map.b_map[i]);
-        i++;
-   }
     while(data->cub_map.b_map[y])
     {
         x = 0;
