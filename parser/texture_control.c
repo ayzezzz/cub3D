@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 16:00:45 by itulgar           #+#    #+#             */
-/*   Updated: 2025/01/24 17:35:05 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/01/26 13:10:18 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,9 @@ static void set_texture(t_data *data,char * clean_str)
             data->textures.ea  = find_texture_path(data,clean_str + 3);
         }
         else if((clean_str[0] == 'F' && clean_str[1] == ' ') && (data->textures.check_list[F] += 1))
-            find_color_num(data,clean_str + 3);
+            find_color_num(data,clean_str + 2);
         else if((clean_str[0] == 'C' && clean_str[1]  ==  ' ') && (data->textures.check_list[C] += 1))
-            find_color_num(data,clean_str + 3);
+            find_color_num(data,clean_str + 2);
 }
 
 static int texture_loop(t_data *data, int *i, char*str, int fd)
@@ -74,7 +74,7 @@ static int texture_loop(t_data *data, int *i, char*str, int fd)
         (*i)++;
     }
     if(!is_fill_textures(data))
-        return error_message("Texture wrong format 🥺\n"),0; 
+        return error_message("Invalid textures! 🥺\n"),0; 
     return 1;
 }
 
@@ -99,7 +99,5 @@ int texture_count_check(t_data *data)
         free(clean_str);
     }
     close(fd);
-    if(!is_fill_textures(data))
-        return error_message("Invalid textures count 🥺\n"),0;
     return 1;
 }
