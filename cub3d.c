@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 18:09:16 by itulgar           #+#    #+#             */
-/*   Updated: 2025/01/26 14:40:30 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/01/27 15:38:09 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int main(int argc, char **argv)
             free(data);
             return 0;
         }
+    cub_game(data);
     //libx
     free_data(data);
    
