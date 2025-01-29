@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 18:09:31 by itulgar           #+#    #+#             */
-/*   Updated: 2025/01/27 19:49:16 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/01/28 17:26:52 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,16 @@ typedef struct s_map
 
 } t_map;
 
+typedef struct s_img
+{
+    void    *img;
+    int     bpp;
+    int     endian;
+    int     size_line;
+    int     *addr;
+    
+}   t_img;
+
 typedef struct s_mlx
 {
     void *mlx;
@@ -72,19 +82,20 @@ typedef struct s_mlx
     void *we;
     void *ea;
     void *img;
-    void *addr;
+    int *addr;
     int endian;
     int bpp;
     int size_line;
+    t_img **te_img;
     
-}t_mlx;
+}   t_mlx;
 typedef struct s_data
 {
     t_textures textures;
     t_map cub_map;
     char *path;
     t_player player;
-    t_mlx cub_mlx; 
+    t_mlx *cub_mlx; 
 
 } t_data;
 
