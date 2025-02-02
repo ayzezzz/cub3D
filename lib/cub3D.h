@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 18:09:31 by itulgar           #+#    #+#             */
-/*   Updated: 2025/02/02 12:53:54 by zayaz            ###   ########.fr       */
+/*   Updated: 2025/02/02 19:40:11 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ typedef struct s_rayc
     int wall_start;
     int wall_end;
     double per_pix;
-    double	tex_y_next; 
+    double	tex_y_next;
 } t_rayc;
 
 typedef struct s_textures
@@ -113,6 +113,21 @@ typedef struct s_mlx
     t_img **te_img;
     
 }   t_mlx;
+
+typedef struct s_keyp
+{
+    int w;
+    int a;
+    int s;
+    int d;
+    int left_p;
+    int right_p;
+    double move_speed;
+    double dir_speed;
+
+
+} t_keyp;
+
 typedef struct s_data
 {
     t_textures textures;
@@ -121,6 +136,7 @@ typedef struct s_data
     t_player player;
     t_mlx *cub_mlx; 
     t_rayc *rayc;
+    t_keyp key;
 
 } t_data;
 
@@ -158,4 +174,8 @@ int image_loop(t_data *data);
 void raycasting(t_data *data);
 void set_pixel(t_data *data, int line_h, int side);
 void draw_textured_column(t_data *data,int side,int col);
+int key_release(int keycode, t_data *data);
+void call_move(t_data *data);
+void turn_left(t_data *data);
+void turn_right(t_data *data);
 #endif

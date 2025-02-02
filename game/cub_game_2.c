@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_game_2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 15:12:37 by itulgar           #+#    #+#             */
-/*   Updated: 2025/02/02 15:38:57 by zayaz            ###   ########.fr       */
+/*   Updated: 2025/02/02 18:40:58 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int image_loop(t_data *data)
 {
     horizon_line(data);
     raycasting(data);
-   mlx_put_image_to_window(data->cub_mlx->mlx,data->cub_mlx->window,data->cub_mlx->img,0,0);
+    mlx_put_image_to_window(data->cub_mlx->mlx,data->cub_mlx->window,data->cub_mlx->img,0,0);
+    call_move(data);
     return 0;
 }

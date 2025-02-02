@@ -3,37 +3,53 @@
 /*                                                        :::      ::::::::   */
 /*   key_press.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 12:31:25 by itulgar           #+#    #+#             */
-/*   Updated: 2025/02/02 15:36:29 by zayaz            ###   ########.fr       */
+/*   Updated: 2025/02/02 18:41:04 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../lib/cub3D.h"
+
+int key_release(int keycode, t_data *data)
+{
+     if(keycode == 119)
+        data->key.w = 0;
+    if(keycode == 115)
+        data->key.s = 0;
+    if(keycode == 97 )
+        data->key.a = 0;
+    if(keycode == 100 )
+        data->key.d = 0;
+     if(keycode == 65363)
+        data->key.right_p = 0;
+    if(keycode == 65361)
+        data->key.left_p = 0;
+    return 0;
+}
 
 int key_press(int keycode,t_data *data)
 {
     if(keycode == 65307)
     {
         free_image(data->cub_mlx);
-        // free(data->rayc);
+        free(data->cub_mlx);
         free_data(data);
         printf("biy ehe 😸\n");
         exit(1);
     }
-    // if(keycode == 119)
-    //  printf("S\n");
-    // if(keycode == 115)
-        //printf("S\n");
-    // if(keycode == 97 )
-        //printf("A\n");
-    // if(keycode == 100 )
-        //printf("D\n");
-     // if(keycode == 65363)
-        //printf("sag acı\n");
-    // if(keycode == 65361)
-        //printf("sol\n");
+    if(keycode == 119)
+        data->key.w = 1;
+    if(keycode == 115)
+        data->key.s = 1;
+    if(keycode == 97 )
+        data->key.a = 1;
+    if(keycode == 100 )
+        data->key.d = 1;
+     if(keycode == 65363)
+        data->key.right_p = 1;
+    if(keycode == 65361)
+        data->key.left_p = 1;
     return 0;
 }
-

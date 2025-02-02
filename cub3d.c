@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 18:09:16 by itulgar           #+#    #+#             */
-/*   Updated: 2025/01/30 16:57:59 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/02/02 18:21:31 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ int main(int argc, char **argv)
             return 0;
         }
     cub_game(data);
-    //libx
     free(data->rayc);
     free_data(data);
    

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 13:47:55 by itulgar           #+#    #+#             */
-/*   Updated: 2025/02/02 12:55:26 by zayaz            ###   ########.fr       */
+/*   Updated: 2025/02/02 18:24:30 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,5 @@ void draw_textured_column(t_data *data,int side, int col)
             color = data->cub_mlx->te_img[WE]->addr[text_i];
         data->cub_mlx->addr[i * s_width + col] = color;
         i++;
-    }
-
-    
+    }    
 }
