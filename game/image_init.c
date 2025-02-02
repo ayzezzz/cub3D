@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   image_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
+/*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 13:12:51 by itulgar           #+#    #+#             */
-/*   Updated: 2025/01/29 13:20:59 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/02/02 12:54:51 by zayaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void get_image(t_data *data)
 {
-    int width;
-    int height;
-    data->cub_mlx->ea =  mlx_xpm_file_to_image(data->cub_mlx->mlx, data->textures.ea, &width, &height);
-    data->cub_mlx->so =  mlx_xpm_file_to_image(data->cub_mlx->mlx, data->textures.so, &width, &height);
-    data->cub_mlx->we =  mlx_xpm_file_to_image(data->cub_mlx->mlx, data->textures.we, &width, &height);
-    data->cub_mlx->no =  mlx_xpm_file_to_image(data->cub_mlx->mlx, data->textures.no, &width, &height);
+    // int width;
+    // int height;
+    data->cub_mlx->ea =  mlx_xpm_file_to_image(data->cub_mlx->mlx, data->textures.ea, &data->cub_mlx->map_size, &data->cub_mlx->map_size);
+    data->cub_mlx->so =  mlx_xpm_file_to_image(data->cub_mlx->mlx, data->textures.so, &data->cub_mlx->map_size, &data->cub_mlx->map_size);
+    data->cub_mlx->we =  mlx_xpm_file_to_image(data->cub_mlx->mlx, data->textures.we, &data->cub_mlx->map_size, &data->cub_mlx->map_size);
+    data->cub_mlx->no =  mlx_xpm_file_to_image(data->cub_mlx->mlx, data->textures.no, &data->cub_mlx->map_size, &data->cub_mlx->map_size);
 }
 
 void addr_img(t_data *data, void *img_ptr, int index)

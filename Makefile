@@ -1,8 +1,7 @@
 NAME = cub3D
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
-MINIFLAGS = -Llib/minilibx_linux -lmlx -Llib/libft -lft -framework OpenGL -framework AppKit
-#-fsanitize=address -Llib/minilibx_linux -lmlx -L/usr/lib -Ilib/minilibx_linux -lXext -lX11 -lm -lz
+MINIFLAGS = -fsanitize=address -Llib/minilibx_linux -lmlx -L/usr/lib -Ilib/minilibx_linux -lXext -lX11 -lm -lz
 RM = rm -rf
 SRCS = cub3d.c\
 		./utils/util.c\

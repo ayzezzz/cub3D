@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
+/*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 18:10:37 by itulgar           #+#    #+#             */
-/*   Updated: 2025/01/31 20:18:05 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/02/02 12:08:04 by zayaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ static void set_variable(t_data *data, int i)
     data->rayc->ray_dir_y = data->player.dir_y + data->player.plane_y * data->rayc->camera_x;
     data->rayc->map_x = (int)data->player.p_x;
     data->rayc->map_y = (int)data->player.p_y;
-    // x-y ters
     data->rayc->delta_x = fabs(1 / data->rayc->ray_dir_x);
     data->rayc->delta_y = fabs(1 / data->rayc->ray_dir_y);
 }

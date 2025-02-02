@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
+/*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 18:09:31 by itulgar           #+#    #+#             */
-/*   Updated: 2025/01/31 19:52:06 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/02/02 12:53:54 by zayaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 #include "minilibx_linux/mlx.h"
 #include "math.h"
 
-#define s_width 1350
-#define s_height 800
+#define s_width 1920
+#define s_height 1080
 #define NO 0
 #define SO 1
 #define WE 2
@@ -50,7 +50,7 @@ typedef struct s_rayc
     int wall_start;
     int wall_end;
     double per_pix;
-    double	tex_y_next;   
+    double	tex_y_next; 
 } t_rayc;
 
 typedef struct s_textures
@@ -109,6 +109,7 @@ typedef struct s_mlx
     int endian;
     int bpp;
     int size_line;
+    int map_size;
     t_img **te_img;
     
 }   t_mlx;
