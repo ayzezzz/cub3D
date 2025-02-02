@@ -6,7 +6,7 @@
 /*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 18:10:37 by itulgar           #+#    #+#             */
-/*   Updated: 2025/02/02 12:08:04 by zayaz            ###   ########.fr       */
+/*   Updated: 2025/02/02 15:37:41 by zayaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static void set_variable(t_data *data, int i)
 {
     data->rayc = (t_rayc *)ft_calloc(1, sizeof(t_rayc));
+
     data->rayc->camera_x = 2 * i / (double)s_width - 1;
     data->rayc->ray_dir_x = data->player.dir_x + data->player.plane_x * data->rayc->camera_x;
     data->rayc->ray_dir_y = data->player.dir_y + data->player.plane_y * data->rayc->camera_x;
@@ -106,7 +107,7 @@ void raycasting(t_data *data)
         else
             data->rayc->wall_dist = data->rayc->side_y - data->rayc->delta_y;
         draw_wall(data, side, i);
-
         i++;
+        free(data->rayc);
     }
 }

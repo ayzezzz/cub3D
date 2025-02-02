@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_press.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
+/*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 12:31:25 by itulgar           #+#    #+#             */
-/*   Updated: 2025/01/30 16:59:42 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/02/02 15:36:29 by zayaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int key_press(int keycode,t_data *data)
     if(keycode == 65307)
     {
         free_image(data->cub_mlx);
-        free(data->rayc);
+        // free(data->rayc);
         free_data(data);
         printf("biy ehe 😸\n");
         exit(1);
