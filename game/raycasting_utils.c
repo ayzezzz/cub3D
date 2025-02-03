@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 13:47:55 by itulgar           #+#    #+#             */
-/*   Updated: 2025/02/02 18:24:30 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/02/03 14:57:23 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,6 @@ void set_pixel(t_data *data, int line_h, int side)
     data->rayc->per_pix = 1.0 * 64 / line_h;
 	data->rayc->tex_y_next = (data->rayc->wall_start - s_height / 2
 			+ line_h / 2) * data->rayc->per_pix;
-
-
-
 }
 
 void draw_textured_column(t_data *data,int side, int col)
@@ -44,14 +41,15 @@ void draw_textured_column(t_data *data,int side, int col)
 				- 1);
         data->rayc->tex_y_next += data->rayc->per_pix;
         text_i = data->rayc->text_x + data->cub_mlx->map_size * data->rayc->text_y;
-        if(data->rayc->ray_dir_x > 0 && side != 1)
-            color = data->cub_mlx->te_img[SO]->addr[text_i];
-        else if(data->rayc->ray_dir_x < 0 && side != 1)
-            color = data->cub_mlx->te_img[NO]->addr[text_i];
-        else   if(data->rayc->ray_dir_x <= 2 && data->rayc->ray_dir_y >= 0 && side == 1)
-            color = data->cub_mlx->te_img[EA]->addr[text_i];
-        else
-            color = data->cub_mlx->te_img[WE]->addr[text_i];
+        if (data->rayc->ray_dir_x > 0 && side == 0)
+    color = data->cub_mlx->te_img[WE]->addr[text_i];
+else if (data->rayc->ray_dir_x < 0 && side == 0)
+    color = data->cub_mlx->te_img[EA]->addr[text_i];
+else if (data->rayc->ray_dir_y > 0 && side == 1)
+    color = data->cub_mlx->te_img[NO]->addr[text_i];
+else if (data->rayc->ray_dir_y < 0 && side == 1)
+    color = data->cub_mlx->te_img[SO]->addr[text_i];
+
         data->cub_mlx->addr[i * s_width + col] = color;
         i++;
     }    

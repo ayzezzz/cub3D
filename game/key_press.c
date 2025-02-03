@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 12:31:25 by itulgar           #+#    #+#             */
-/*   Updated: 2025/02/02 18:41:04 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/02/03 15:26:41 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int key_press(int keycode,t_data *data)
         free_image(data->cub_mlx);
         free(data->cub_mlx);
         free_data(data);
-        printf("biy ehe 😸\n");
+        printf("GAME OVER BY BY 😎\n");
         exit(1);
     }
     if(keycode == 119)

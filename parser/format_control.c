@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 18:39:17 by itulgar           #+#    #+#             */
-/*   Updated: 2025/01/26 12:27:45 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/02/03 15:45:49 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ char *find_texture_path(t_data *data,char *clean_str)
         double_str_free(str);
         textures_free(data);
         free(data);
-        return error_message("invalid character 🥺\n"),NULL;
+        return error_message("Invalid path 🥺\n"),NULL;
     }
     return path;
 }

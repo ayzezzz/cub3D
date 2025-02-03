@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 11:53:49 by zayaz             #+#    #+#             */
-/*   Updated: 2025/01/26 19:11:08 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/02/03 16:49:39 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int map_check(t_data *data)
     fill_map(data);
     player_loc(data);
     map_close_check(data);
-    flood_fill_check(data);
+    //flood_fill_check(data);
     close(fd);
     return 1;
 }

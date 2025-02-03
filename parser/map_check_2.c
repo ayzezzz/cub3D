@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_check_2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 14:47:38 by zayaz             #+#    #+#             */
-/*   Updated: 2025/01/27 14:47:41 by zayaz            ###   ########.fr       */
+/*   Updated: 2025/02/03 15:47:18 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,11 @@ void character_check(t_data *data)
 
     line = get_next_line(fd);
     line = go_pass_textures(line, fd);
-
+    if(!line)
+    {
+        map_free(data, line, fd);  
+        error_message("Map not found!\n");
+    }
     while (line)
     {
         check_line_for_invalid_chars(data, line, fd);
@@ -79,7 +83,7 @@ void player_check(t_data *data)
     if (player_count != 1)
     {
         map_free(data, line, fd);
-        error_message("More than one player found! 🥺\n");
+        error_message("Invalid player! 🥺\n");
     }
     free(line);
     close(fd);
