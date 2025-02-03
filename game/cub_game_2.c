@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   cub_game_2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
+/*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 15:12:37 by itulgar           #+#    #+#             */
-/*   Updated: 2025/02/02 18:40:58 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/02/03 13:47:20 by zayaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../lib/cub3D.h"
-
 
 int set_rgb(char **color_type)
 {  
