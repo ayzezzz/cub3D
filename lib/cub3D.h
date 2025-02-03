@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 18:09:31 by itulgar           #+#    #+#             */
-/*   Updated: 2025/02/03 16:26:46 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/02/03 19:28:08 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,8 @@ typedef struct s_player
     double dir_y; // yönü
     double plane_x;
     double plane_y;
-      int p_b_x; //loc
-    int p_b_y;
+    size_t p_b_x; //loc
+    size_t p_b_y;
 
 } t_player;
 
@@ -85,6 +85,8 @@ typedef struct s_map
     char **b_map;
     char **cpymap;
     int map_row;
+    int b_col;
+    int b_row;
 
 } t_map;
 

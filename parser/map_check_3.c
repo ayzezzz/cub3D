@@ -6,11 +6,26 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 17:56:19 by itulgar           #+#    #+#             */
-/*   Updated: 2025/02/03 16:44:54 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/02/03 19:23:47 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../lib/cub3D.h"
+
+void player_place(t_data *data)
+{
+    if(data->player.p_b_x == 1 || (int)data->player.p_b_x == data->cub_map.b_row -2)
+    {
+        free_data(data);
+        error_message("Map is not closed! 🥺\n");
+    }
+    if(data->player.p_b_y == 1 || (int)data->player.p_b_y == data->cub_map.b_col -2)
+    {
+        free_data(data);
+        error_message("Map is not closed! 🥺\n");
+        
+    }
+}
 
 void player_b_loc(t_data *data)
 {
@@ -28,13 +43,13 @@ void player_b_loc(t_data *data)
             {
                 data->player.p_b_x = j;
                 data->player.p_b_y = i;
-                printf("bx:%d\n", data->player.p_b_x);
-                printf("by:%d\n", data->player.p_b_y);
             }
             j++;
         }
         i++;
     }
+    player_place(data);
+  
 }
 void player_loc(t_data *data)
 {
@@ -78,15 +93,8 @@ void flood_fill_check(t_data *data)
     i = 0;
     j = 0;
     
-    //printf("x:%d\n y: %d\n", data->player.p_b_x, data->player.p_b_y);
     player_b_loc(data); 
     flood_fill(data, data->player.p_b_x, data->player.p_b_y);
-    while(data->cub_map.b_map[i])
-    {
-        printf("%s\n",data->cub_map.b_map[i]);
-        i++;
-    }
-    exit(1);
     while(data->cub_map.b_map[i])
     {
         j = 0;

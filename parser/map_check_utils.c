@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 14:58:06 by zayaz             #+#    #+#             */
-/*   Updated: 2025/01/30 16:57:52 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/02/03 19:31:25 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ void go_gnl_last(int fd, char *line)
 
 static int pass_texture(char *line)
 {
-    if (line[0] == 'N' || line[0] == 'S' ||
-        line[0] == 'W' || line[0] == 'E' || line[0] == 'F' ||
+    if ((line[0] == 'N' && line[1]  && line[1] == 'O') || (line[0] == 'S' && line[1]  && line[1] == 'O') ||
+        (line[0] == 'W' && line[1]  && line[1] == 'E') || (line[0] == 'E' && line[1]  && line[1] == 'A') || line[0] == 'F' ||
         line[0] == 'C' || line[0] == '\n')
-        return (1);
+        return(1);
     return (0);
 }
 

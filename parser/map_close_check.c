@@ -6,26 +6,26 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 13:38:03 by zayaz             #+#    #+#             */
-/*   Updated: 2025/02/03 16:58:25 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/02/03 19:28:49 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../lib/cub3D.h"
 
-static char **allocate_b_map(t_data *data,size_t max_row, size_t max_col)
+static char **allocate_b_map(t_data *data)
 {
-    size_t i = 0;
+    int i = 0;
 
-    data->cub_map.b_map = malloc((max_col + 1) * sizeof(char *));
+    data->cub_map.b_map = malloc((data->cub_map.b_col + 1) * sizeof(char *));
     if (!data->cub_map.b_map)
     {
         error_message("Memory allocation failed for b map! 🥺\n");
         return NULL;
     }
 
-    while (i < max_col)
+    while (i < data->cub_map.b_col)
     {
-        data->cub_map.b_map[i] = malloc((max_row + 1) * sizeof(char));
+        data->cub_map.b_map[i] = malloc((data->cub_map.b_row + 1) * sizeof(char));
         if (!data->cub_map.b_map[i])
         {
             free_data(data);
@@ -38,14 +38,14 @@ static char **allocate_b_map(t_data *data,size_t max_row, size_t max_col)
     return (data->cub_map.b_map);
 }
 
-static void fill_b_map(t_data *data, size_t max_row, size_t max_col)
+static void fill_b_map(t_data *data)
 {
-    size_t i = 0;
+    int i = 0;
     
-    while (i < max_col)
+    while (i < data->cub_map.b_col)
     {
-        size_t j = 0;
-        while (j < max_row)
+        int j = 0;
+        while (j < data->cub_map.b_row)
         {
             data->cub_map.b_map[i][j] = 'B';
             j++;
@@ -56,18 +56,18 @@ static void fill_b_map(t_data *data, size_t max_row, size_t max_col)
     data->cub_map.b_map[i] = NULL;   
 }
 
-static void copy_b_map_data(t_data *data, size_t max_row, size_t max_col)
+static void copy_b_map_data(t_data *data)
 {
-    size_t i = 0;
+    int i = 0;
 
-    while (i < max_col - 2)
+    while (i < data->cub_map.b_col - 2)
     {
-        size_t j = 0;
-        while ( j < ft_strlen(data->cub_map.map[i]))
+        int j = 0;
+        while ( j < (int)ft_strlen(data->cub_map.map[i]))
         {
             if (data->cub_map.map[i] != NULL && data->cub_map.b_map[i] != NULL)
             {
-                if (i < max_col && j < max_row)
+                if (i < data->cub_map.b_col && j < data->cub_map.b_row)
                 {
                     if (data->cub_map.map[i][j] != ' ' && data->cub_map.map[i][j] != '\0')
                         data->cub_map.b_map[i + 1][j + 1] = data->cub_map.map[i][j];
@@ -85,23 +85,23 @@ static void copy_b_map_data(t_data *data, size_t max_row, size_t max_col)
     }
 }
 
-static void b_map_check(t_data *data,size_t max_row, size_t max_col)
+static void b_map_check(t_data *data)
 {
-    size_t i;
-    size_t j;
+    int i;
+    int j;
 
     i = 0;
-    while (i < max_col - 1)
+    while (i < data->cub_map.b_col - 1)
     {
         j = 0;
-        while (j < max_row - 1)
+        while (j < data->cub_map.b_row - 1)
         {
             if (data->cub_map.b_map[i][j] == '0')
             {
                 if ((i > 0 && data->cub_map.b_map[i - 1][j] == 'B') ||
-                    (i < max_col - 1 && data->cub_map.b_map[i + 1][j] == 'B') ||
+                    (i < data->cub_map.b_col - 1 && data->cub_map.b_map[i + 1][j] == 'B') ||
                     (j > 0 && data->cub_map.b_map[i][j - 1] == 'B') ||
-                    (j < max_row - 1 && data->cub_map.b_map[i][j + 1] == 'B'))
+                    (j < data->cub_map.b_row - 1 && data->cub_map.b_map[i][j + 1] == 'B'))
                 {
                     free_data(data);
                     error_message("Map is not closed! 🥺\n");
@@ -115,15 +115,12 @@ static void b_map_check(t_data *data,size_t max_row, size_t max_col)
 
 void map_close_check(t_data *data)
 {
-    size_t max_row;
-    size_t max_col;
-
-    max_row = max_row_lenght(data) + 2;
-    max_col = max_col_length(data) + 2;
-    data->cub_map.b_map = allocate_b_map(data,max_row, max_col);
+    data->cub_map.b_row = max_row_lenght(data) + 2;
+    data->cub_map.b_col = max_col_length(data) + 2;
+    data->cub_map.b_map = allocate_b_map(data);
     if (!data->cub_map.b_map)
         return;
-    fill_b_map(data, max_row, max_col);
-    copy_b_map_data(data, max_row, max_col);
-    b_map_check(data, max_row, max_col);
+    fill_b_map(data);
+    copy_b_map_data(data);
+    b_map_check(data);
 }
