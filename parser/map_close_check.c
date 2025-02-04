@@ -41,7 +41,7 @@ static char **allocate_b_map(t_data *data)
 static void fill_b_map(t_data *data)
 {
     int i;
-    
+
     i = 0;
     while (i < data->cub_map.b_col)
     {
@@ -54,7 +54,7 @@ static void fill_b_map(t_data *data)
         data->cub_map.b_map[i][j] = '\0';
         i++;
     }
-    data->cub_map.b_map[i] = NULL;   
+    data->cub_map.b_map[i] = NULL;
 }
 
 static void check_and_copy_map_data(t_data *data, int i, int j)

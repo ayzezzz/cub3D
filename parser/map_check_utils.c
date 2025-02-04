@@ -17,7 +17,7 @@ void go_gnl_last(int fd, char *line)
     while (1)
     {
         line = get_next_line(fd);
-        if (line  == NULL)
+        if (line == NULL)
             break;
         free(line);
     }
@@ -26,10 +26,10 @@ void go_gnl_last(int fd, char *line)
 
 static int pass_texture(char *line)
 {
-    if ((line[0] == 'N' && line[1]  && line[1] == 'O') || (line[0] == 'S' && line[1]  && line[1] == 'O') ||
-        (line[0] == 'W' && line[1]  && line[1] == 'E') || (line[0] == 'E' && line[1]  && line[1] == 'A') || line[0] == 'F' ||
+    if ((line[0] == 'N' && line[1] && line[1] == 'O') || (line[0] == 'S' && line[1] && line[1] == 'O') ||
+        (line[0] == 'W' && line[1] && line[1] == 'E') || (line[0] == 'E' && line[1] && line[1] == 'A') || line[0] == 'F' ||
         line[0] == 'C' || line[0] == '\n')
-        return(1);
+        return (1);
     return (0);
 }
 

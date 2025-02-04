@@ -50,7 +50,7 @@ typedef struct s_rayc
     int wall_start;
     int wall_end;
     double per_pix;
-    double	tex_y_next;
+    double tex_y_next;
 } t_rayc;
 
 typedef struct s_textures
@@ -67,14 +67,14 @@ typedef struct s_textures
 
 typedef struct s_player
 {
-    double p_x; //loc
-    double p_y; //loc
-    char p_dir; //name
+    double p_x;   // loc
+    double p_y;   // loc
+    char p_dir;   // name
     double dir_x; // yönü
     double dir_y; // yönü
     double plane_x;
     double plane_y;
-    size_t p_b_x; //loc
+    size_t p_b_x; // loc
     size_t p_b_y;
 
 } t_player;
@@ -92,13 +92,13 @@ typedef struct s_map
 
 typedef struct s_img
 {
-    void    *img;
-    int     bpp;
-    int     endian;
-    int     size_line;
-    int     *addr;
-    
-}   t_img;
+    void *img;
+    int bpp;
+    int endian;
+    int size_line;
+    int *addr;
+
+} t_img;
 
 typedef struct s_mlx
 {
@@ -115,8 +115,8 @@ typedef struct s_mlx
     int size_line;
     int map_size;
     t_img **te_img;
-    
-}   t_mlx;
+
+} t_mlx;
 
 typedef struct s_keyp
 {
@@ -129,7 +129,6 @@ typedef struct s_keyp
     double move_speed;
     double dir_speed;
 
-
 } t_keyp;
 
 typedef struct s_data
@@ -138,7 +137,7 @@ typedef struct s_data
     t_map cub_map;
     char *path;
     t_player player;
-    t_mlx *cub_mlx; 
+    t_mlx *cub_mlx;
     t_rayc *rayc;
     t_keyp key;
 
@@ -167,7 +166,7 @@ void free_data(t_data *data);
 void flood_fill_check(t_data *data);
 void find_dir(t_data *data);
 void game_start(t_data *data);
-int key_press(int keycode,t_data *data);
+int key_press(int keycode, t_data *data);
 int close_window(t_data *data);
 void image_init(t_data *data);
 void free_image(t_mlx *cub_mlx);
@@ -175,7 +174,7 @@ void horizon_line(t_data *data);
 int image_loop(t_data *data);
 void raycasting(t_data *data);
 void set_pixel(t_data *data, int line_h, int side);
-void draw_textured_column(t_data *data,int side,int col);
+void draw_textured_column(t_data *data, int side, int col);
 int key_release(int keycode, t_data *data);
 void call_move(t_data *data);
 void turn_left(t_data *data);

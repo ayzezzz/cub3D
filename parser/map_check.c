@@ -44,7 +44,7 @@ static void fill_map(t_data *data)
         error_message("Not open file! 🥺\n");
     }
     line = get_next_line(fd);
-    line = go_pass_textures(line, fd); 
+    line = go_pass_textures(line, fd);
     allocate_map(data);
     while (line)
     {
@@ -85,7 +85,7 @@ static void map_row_count(t_data *data, int fd)
     close(fd);
 }
 
-void  map_check(t_data *data)
+void map_check(t_data *data)
 {
     int fd;
 

@@ -14,7 +14,7 @@
 
 void error_message(char *str)
 {
-    printf("Error\n%s",str);
+    printf("Error\n%s", str);
     exit(1);
 }
 
@@ -32,12 +32,12 @@ void double_str_free(char **str)
 {
     int i;
     i = 0;
-    while(str && str[i])
+    while (str && str[i])
     {
         free(str[i]);
         i++;
     }
-    if(str)
+    if (str)
         free(str);
 }
 
@@ -45,14 +45,14 @@ void free_image(t_mlx *cub_mlx)
 {
     int i;
     i = 0;
-    
-    mlx_destroy_image(cub_mlx->mlx,cub_mlx->img);
-    mlx_destroy_image(cub_mlx->mlx,cub_mlx->ea);
-    mlx_destroy_image(cub_mlx->mlx,cub_mlx->so);
-    mlx_destroy_image(cub_mlx->mlx,cub_mlx->we);
-    mlx_destroy_image(cub_mlx->mlx,cub_mlx->no);
-    while(i < 4)
-    free(cub_mlx->te_img[i++]);
+
+    mlx_destroy_image(cub_mlx->mlx, cub_mlx->img);
+    mlx_destroy_image(cub_mlx->mlx, cub_mlx->ea);
+    mlx_destroy_image(cub_mlx->mlx, cub_mlx->so);
+    mlx_destroy_image(cub_mlx->mlx, cub_mlx->we);
+    mlx_destroy_image(cub_mlx->mlx, cub_mlx->no);
+    while (i < 4)
+        free(cub_mlx->te_img[i++]);
     free(cub_mlx->te_img);
 }
 
