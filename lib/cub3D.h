@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
+/*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 18:09:31 by itulgar           #+#    #+#             */
-/*   Updated: 2025/02/03 19:28:08 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/02/04 13:23:12 by zayaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,4 +182,5 @@ int key_release(int keycode, t_data *data);
 void call_move(t_data *data);
 void turn_left(t_data *data);
 void turn_right(t_data *data);
+void b_map_check(t_data *data);
 #endif

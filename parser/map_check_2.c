@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_check_2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
+/*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 14:47:38 by zayaz             #+#    #+#             */
-/*   Updated: 2025/02/03 15:47:18 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/02/04 13:02:21 by zayaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ void character_check(t_data *data)
 {
     char *line;
     int fd = open(data->path, O_RDONLY);
-
+    if (fd == -1)
+        return;
     line = get_next_line(fd);
     line = go_pass_textures(line, fd);
     if(!line)
@@ -69,17 +70,16 @@ void player_check(t_data *data)
     int player_count = 0;
     char *line;
     int fd = open(data->path, O_RDONLY);
-
+    if (fd == -1)
+        return;
     line = get_next_line(fd);
     line = go_pass_textures(line, fd);
-
     while (line)
     {
         count_players_in_line(line, &player_count);
         free(line);
         line = get_next_line(fd);
     }
-
     if (player_count != 1)
     {
         map_free(data, line, fd);
