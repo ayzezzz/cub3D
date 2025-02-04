@@ -6,7 +6,7 @@
 /*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 17:56:19 by itulgar           #+#    #+#             */
-/*   Updated: 2025/02/04 13:09:42 by zayaz            ###   ########.fr       */
+/*   Updated: 2025/02/04 17:14:01 by zayaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ static void player_place(t_data *data)
     {
         free_data(data);
         error_message("Map is not closed! 🥺\n");
-        
     }
 }
 
@@ -49,7 +48,7 @@ static void player_b_loc(t_data *data)
         i++;
     }
     player_place(data);
-  
+    check_vertical_boundaries(data);
 }
 void player_loc(t_data *data)
 {

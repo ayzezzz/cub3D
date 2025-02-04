@@ -1,6 +1,6 @@
 NAME = cub3D
 CC = cc
-CFLAGS = -Wall -Wextra -Werror #-fsanitize=address -g
+CFLAGS = -Wall -Wextra -Werror #-fsanitize=leak -g
 MINIFLAGS = -Llib/minilibx_linux -lmlx -L/usr/lib -Ilib/minilibx_linux -lXext -lX11 -lm -lz
 #-fsanitize=address
 RM = rm -rf
@@ -9,7 +9,6 @@ SRCS = cub3d.c\
 		./parser/control1.c\
 		./lib/get_next_line/get_next_line_utils.c\
 		./lib/get_next_line/get_next_line.c\
-		./parser/cub_check.c\
 		./parser/map_check.c\
 		./parser/texture_control.c\
 		./parser/format_control.c\
@@ -26,7 +25,8 @@ SRCS = cub3d.c\
 		./game/raycasting.c\
 		./game/raycasting_utils.c\
 		./game/game_move.c\
-		./game/game_move_2.c
+		./game/game_move_2.c\
+		./parser/map_check_utils_2.c\
 
 MLX = ./lib/minilibx_linux/libmlx.a
 OBJS = $(SRCS:.c=.o)

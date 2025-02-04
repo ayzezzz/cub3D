@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_check_2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 14:47:38 by zayaz             #+#    #+#             */
-/*   Updated: 2025/02/04 13:02:21 by zayaz            ###   ########.fr       */
+/*   Updated: 2025/02/04 17:47:44 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,10 @@ void character_check(t_data *data)
     char *line;
     int fd = open(data->path, O_RDONLY);
     if (fd == -1)
-        return;
+    {
+        free(data);
+        error_message("Not open file! 🥺\n");
+    }
     line = get_next_line(fd);
     line = go_pass_textures(line, fd);
     if(!line)
@@ -71,7 +74,10 @@ void player_check(t_data *data)
     char *line;
     int fd = open(data->path, O_RDONLY);
     if (fd == -1)
-        return;
+    {
+        free(data);
+        error_message("Not open file! 🥺\n");
+    }
     line = get_next_line(fd);
     line = go_pass_textures(line, fd);
     while (line)
