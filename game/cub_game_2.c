@@ -13,10 +13,10 @@
 #include "../lib/cub3D.h"
 
 int set_rgb(char **color_type)
-{  
+{
     int i;
     i = (ft_atoi(color_type[0]) << 16) | (ft_atoi(color_type[1]) << 8) | ft_atoi(color_type[2]);
-    return(i);
+    return (i);
 }
 
 void horizon_line(t_data *data)
@@ -27,30 +27,29 @@ void horizon_line(t_data *data)
     int c;
     j = 0;
     i = 0;
-    f= set_rgb(data->textures.f);
+    f = set_rgb(data->textures.f);
     c = set_rgb(data->textures.c);
 
-    while(i < s_height)
+    while (i < s_height)
     {
         j = 0;
-        while(j < s_width)
+        while (j < s_width)
         {
-            if(i < s_height / 2) 
+            if (i < s_height / 2)
                 data->cub_mlx->addr[(s_width * i) + j] = c;
-            else 
-              data->cub_mlx->addr[(s_width * i) + j] = f;  
+            else
+                data->cub_mlx->addr[(s_width * i) + j] = f;
             j++;
         }
-        i++;    
+        i++;
     }
-   
 }
 
 int image_loop(t_data *data)
 {
     horizon_line(data);
     raycasting(data);
-    mlx_put_image_to_window(data->cub_mlx->mlx,data->cub_mlx->window,data->cub_mlx->img,0,0);
+    mlx_put_image_to_window(data->cub_mlx->mlx, data->cub_mlx->window, data->cub_mlx->img, 0, 0);
     call_move(data);
     return 0;
 }

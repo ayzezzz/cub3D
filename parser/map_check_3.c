@@ -14,12 +14,12 @@
 
 static void player_place(t_data *data)
 {
-    if(data->player.p_b_x == 1 || (int)data->player.p_b_x == data->cub_map.b_row -2)
+    if (data->player.p_b_x == 1 || (int)data->player.p_b_x == data->cub_map.b_row - 2)
     {
         free_data(data);
         error_message("Map is not closed! 🥺\n");
     }
-    if(data->player.p_b_y == 1 || (int)data->player.p_b_y == data->cub_map.b_col -2)
+    if (data->player.p_b_y == 1 || (int)data->player.p_b_y == data->cub_map.b_col - 2)
     {
         free_data(data);
         error_message("Map is not closed! 🥺\n");
@@ -33,12 +33,12 @@ static void player_b_loc(t_data *data)
 
     j = 0;
     i = 0;
-    while(data->cub_map.b_map && data->cub_map.b_map[i])
+    while (data->cub_map.b_map && data->cub_map.b_map[i])
     {
         j = 0;
-        while( data->cub_map.b_map[i] && data->cub_map.b_map[i][j])
+        while (data->cub_map.b_map[i] && data->cub_map.b_map[i][j])
         {
-            if(data->cub_map.b_map[i][j] == 'N' || data->cub_map.b_map[i][j] == 'S' || data->cub_map.b_map[i][j] == 'E' || data->cub_map.b_map[i][j] == 'W')
+            if (data->cub_map.b_map[i][j] == 'N' || data->cub_map.b_map[i][j] == 'S' || data->cub_map.b_map[i][j] == 'E' || data->cub_map.b_map[i][j] == 'W')
             {
                 data->player.p_b_x = j;
                 data->player.p_b_y = i;
@@ -57,10 +57,13 @@ void player_loc(t_data *data)
 
     j = 0;
     i = 0;
-    while(data->cub_map.map && data->cub_map.map[i]){
+    while (data->cub_map.map && data->cub_map.map[i])
+    {
         j = 0;
-        while( data->cub_map.map[i] && data->cub_map.map[i][j]){
-            if(data->cub_map.map[i][j] == 'N' || data->cub_map.map[i][j] == 'S' || data->cub_map.map[i][j] == 'E' || data->cub_map.map[i][j] == 'W'){
+        while (data->cub_map.map[i] && data->cub_map.map[i][j])
+        {
+            if (data->cub_map.map[i][j] == 'N' || data->cub_map.map[i][j] == 'S' || data->cub_map.map[i][j] == 'E' || data->cub_map.map[i][j] == 'W')
+            {
                 data->player.p_x = j + 0.5;
                 data->player.p_y = i + 0.5;
                 data->player.p_dir = data->cub_map.map[i][j];
@@ -73,18 +76,18 @@ void player_loc(t_data *data)
 
 static void flood_fill(t_data *data, int x, int y)
 {
-    if (data->cub_map.b_map[y][x] == 'B' || data->cub_map.b_map[y][x] == '*'){
+    if (data->cub_map.b_map[y][x] == 'B' || data->cub_map.b_map[y][x] == '*')
+    {
         return;
     }
     data->cub_map.b_map[y][x] = '*';
 
-		flood_fill(data, x + 1, y);
-		flood_fill(data, x - 1, y);
-		flood_fill(data, x, y + 1);
-		flood_fill(data, x, y - 1);
-   
+    flood_fill(data, x + 1, y);
+    flood_fill(data, x - 1, y);
+    flood_fill(data, x, y + 1);
+    flood_fill(data, x, y - 1);
 }
- 
+
 void flood_fill_check(t_data *data)
 {
     int i;
@@ -92,21 +95,21 @@ void flood_fill_check(t_data *data)
 
     i = 0;
     j = 0;
-    player_b_loc(data); 
+    player_b_loc(data);
     flood_fill(data, data->player.p_b_x, data->player.p_b_y);
-    while(data->cub_map.b_map[i])
+    while (data->cub_map.b_map[i])
     {
         j = 0;
-        while(data->cub_map.b_map[i][j])
+        while (data->cub_map.b_map[i][j])
         {
-            if(data->cub_map.b_map[i][j] == '1' || data->cub_map.b_map[i][j] == '0' || 
-            data->cub_map.b_map[i][j] == 'N' || data->cub_map.b_map[i][j] == 'S' || 
-            data->cub_map.b_map[i][j] == 'W' || data->cub_map.b_map[i][j] == 'E')
+            if (data->cub_map.b_map[i][j] == '1' || data->cub_map.b_map[i][j] == '0' ||
+                data->cub_map.b_map[i][j] == 'N' || data->cub_map.b_map[i][j] == 'S' ||
+                data->cub_map.b_map[i][j] == 'W' || data->cub_map.b_map[i][j] == 'E')
             {
                 free_data(data);
                 error_message("Multi map! 🥺\n");
             }
-            j++;       
+            j++;
         }
         i++;
     }

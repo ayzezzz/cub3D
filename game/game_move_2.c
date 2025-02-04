@@ -33,9 +33,9 @@ void turn_left(t_data *data)
 
    before_dir_x = data->player.dir_x;
    before_plane_x = data->player.plane_x;
-   
+
    data->player.dir_x = before_dir_x * cos(-data->key.dir_speed) - data->player.dir_y * sin(-data->key.dir_speed);
    data->player.dir_y = before_dir_x * sin(-data->key.dir_speed) + data->player.dir_y * cos(-data->key.dir_speed);
    data->player.plane_x = before_plane_x * cos(-data->key.dir_speed) - data->player.plane_y * sin(-data->key.dir_speed);
-   data->player.plane_y = before_plane_x * sin(-data->key.dir_speed) + data->player.plane_y * cos(-data->key.dir_speed);    
+   data->player.plane_y = before_plane_x * sin(-data->key.dir_speed) + data->player.plane_y * cos(-data->key.dir_speed);
 }

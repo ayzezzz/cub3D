@@ -14,18 +14,18 @@
 
 void get_image(t_data *data)
 {
-    data->cub_mlx->ea =  mlx_xpm_file_to_image(data->cub_mlx->mlx, data->textures.ea, &data->cub_mlx->map_size, &data->cub_mlx->map_size);
-    data->cub_mlx->so =  mlx_xpm_file_to_image(data->cub_mlx->mlx, data->textures.so, &data->cub_mlx->map_size, &data->cub_mlx->map_size);
-    data->cub_mlx->we =  mlx_xpm_file_to_image(data->cub_mlx->mlx, data->textures.we, &data->cub_mlx->map_size, &data->cub_mlx->map_size);
-    data->cub_mlx->no =  mlx_xpm_file_to_image(data->cub_mlx->mlx, data->textures.no, &data->cub_mlx->map_size, &data->cub_mlx->map_size);
+  data->cub_mlx->ea = mlx_xpm_file_to_image(data->cub_mlx->mlx, data->textures.ea, &data->cub_mlx->map_size, &data->cub_mlx->map_size);
+  data->cub_mlx->so = mlx_xpm_file_to_image(data->cub_mlx->mlx, data->textures.so, &data->cub_mlx->map_size, &data->cub_mlx->map_size);
+  data->cub_mlx->we = mlx_xpm_file_to_image(data->cub_mlx->mlx, data->textures.we, &data->cub_mlx->map_size, &data->cub_mlx->map_size);
+  data->cub_mlx->no = mlx_xpm_file_to_image(data->cub_mlx->mlx, data->textures.no, &data->cub_mlx->map_size, &data->cub_mlx->map_size);
 }
 
 void addr_img(t_data *data, void *img_ptr, int index)
 {
-  //özür dileriz :(
-  //senden kaynaklı zannettik 
-  //mlx_get_data_addr <3
-  data->cub_mlx->te_img[index]->addr= (int *)mlx_get_data_addr(img_ptr, &data->cub_mlx->te_img[index]->bpp, &data->cub_mlx->te_img[index]->size_line, &data->cub_mlx->te_img[index]->endian);
+  // özür dileriz :(
+  // senden kaynaklı zannettik
+  // mlx_get_data_addr <3
+  data->cub_mlx->te_img[index]->addr = (int *)mlx_get_data_addr(img_ptr, &data->cub_mlx->te_img[index]->bpp, &data->cub_mlx->te_img[index]->size_line, &data->cub_mlx->te_img[index]->endian);
 }
 
 void set_addr_img(t_data *data)
@@ -36,12 +36,11 @@ void set_addr_img(t_data *data)
   data->cub_mlx->te_img = malloc(4 * sizeof(t_img *));
   while (i < 4)
     data->cub_mlx->te_img[i++] = malloc(1 * sizeof(t_img));
-  addr_img(data,data->cub_mlx->no,NO);
-  addr_img(data,data->cub_mlx->so,SO);
-  addr_img(data,data->cub_mlx->we,WE);
-  addr_img(data,data->cub_mlx->ea,EA);
+  addr_img(data, data->cub_mlx->no, NO);
+  addr_img(data, data->cub_mlx->so, SO);
+  addr_img(data, data->cub_mlx->we, WE);
+  addr_img(data, data->cub_mlx->ea, EA);
 }
-
 
 void image_init(t_data *data)
 {
@@ -50,4 +49,3 @@ void image_init(t_data *data)
   get_image(data);
   set_addr_img(data);
 }
-

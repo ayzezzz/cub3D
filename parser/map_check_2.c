@@ -40,9 +40,9 @@ void character_check(t_data *data)
     }
     line = get_next_line(fd);
     line = go_pass_textures(line, fd);
-    if(!line)
+    if (!line)
     {
-        map_free(data, line, fd);  
+        map_free(data, line, fd);
         error_message("Map not found!\n");
     }
     while (line)
