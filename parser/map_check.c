@@ -6,7 +6,7 @@
 /*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 11:53:49 by zayaz             #+#    #+#             */
-/*   Updated: 2025/02/04 13:07:02 by zayaz            ###   ########.fr       */
+/*   Updated: 2025/02/04 13:09:18 by zayaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ static void fill_map(t_data *data)
     data->cub_map.cpymap[i] = NULL;
 }
 
-
 static void map_row_count(t_data *data, int fd)
 {
     char *line = NULL;
@@ -81,6 +80,7 @@ static void map_row_count(t_data *data, int fd)
 int map_check(t_data *data)
 {
     int fd;
+
     fd = open(data->path, O_RDONLY);
     if (fd == -1)
         return (0);

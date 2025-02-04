@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_game.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
+/*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 15:19:15 by itulgar           #+#    #+#             */
-/*   Updated: 2025/02/03 18:52:26 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/02/04 13:29:21 by zayaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ void find_dir2(t_data *data)
     data->player.dir_x = 1;
     data->player.dir_y = 0;
     data->player.plane_x = 0;
-    data->player.plane_y = -0.66;
+    data->player.plane_y = 0.66;
   }
   else if(data->player.p_dir == 'W')
   {
     data->player.dir_x = -1;
     data->player.dir_y = 0;
     data->player.plane_x = 0;
-    data->player.plane_y = 0.66;
+    data->player.plane_y = -0.66;
   }
 }
 

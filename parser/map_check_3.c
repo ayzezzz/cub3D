@@ -6,7 +6,7 @@
 /*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 17:56:19 by itulgar           #+#    #+#             */
-/*   Updated: 2025/02/04 13:03:26 by zayaz            ###   ########.fr       */
+/*   Updated: 2025/02/04 13:09:42 by zayaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void player_loc(t_data *data)
 {
     int i;
     int j;
+
     j = 0;
     i = 0;
     while(data->cub_map.map && data->cub_map.map[i]){
@@ -92,7 +93,6 @@ void flood_fill_check(t_data *data)
 
     i = 0;
     j = 0;
-    
     player_b_loc(data); 
     flood_fill(data, data->player.p_b_x, data->player.p_b_y);
     while(data->cub_map.b_map[i])
