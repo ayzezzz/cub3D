@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 16:00:45 by itulgar           #+#    #+#             */
-/*   Updated: 2025/01/29 16:32:43 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/02/04 19:14:09 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,10 @@ static int texture_loop(t_data *data, int *i, char*str, int fd)
         (*i)++;
     }
     if(!is_fill_textures(data))
-        return error_message("Invalid textures! 🥺\n"),0; 
+        return 0; 
+    
     return 1;
 }
-
 
 int texture_count_check(t_data *data)
 {
@@ -92,8 +92,14 @@ int texture_count_check(t_data *data)
    while ((str = get_next_line(fd)))
     {
         clean_str = ft_strtrim(str," \n");
-        if((clean_str[0] == '0' || clean_str[0] == '1') &&  !texture_loop(data,&i,str,fd))
+        if((clean_str[0] == '0' || clean_str[0] == '1') &&  !texture_loop(data,&i,str,fd)){
+            go_gnl_last(fd, str);
+            free(clean_str);
+            free(str);
+            
+            error_message("Invalid textures! 🥺\n");   
             return 0;
+        }
         set_texture(data,clean_str);
         free(str);
         free(clean_str);

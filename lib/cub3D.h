@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 18:09:31 by itulgar           #+#    #+#             */
-/*   Updated: 2025/02/04 17:14:41 by zayaz            ###   ########.fr       */
+/*   Updated: 2025/02/04 17:41:55 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,9 +146,8 @@ typedef struct s_data
 
 void error_message(char *str);
 void file_path_control(char *argv);
-int cub_check(t_data *data);
 int texture_count_check(t_data *data);
-int map_check(t_data *data);
+void map_check(t_data *data);
 char *find_texture_path(t_data *data, char *clean_str);
 void textures_free(t_data *data);
 void map_free(t_data *data, char *line, int fd);
@@ -166,7 +165,6 @@ void character_check(t_data *data);
 void player_check(t_data *data);
 void free_data(t_data *data);
 void flood_fill_check(t_data *data);
-void cub_game(t_data *data);
 void find_dir(t_data *data);
 void game_start(t_data *data);
 int key_press(int keycode,t_data *data);

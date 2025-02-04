@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_game.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 17:15:41 by zayaz             #+#    #+#             */
-/*   Updated: 2025/02/04 17:15:44 by zayaz            ###   ########.fr       */
+/*   Updated: 2025/02/04 17:41:37 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,3 @@ void game_start(t_data *data)
   mlx_loop(data->cub_mlx->mlx);
 }
 
-void cub_game(t_data *data)
-{
-  find_dir(data);
-  game_start(data);
-}

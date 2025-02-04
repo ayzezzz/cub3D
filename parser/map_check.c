@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 11:53:49 by zayaz             #+#    #+#             */
-/*   Updated: 2025/02/04 13:09:18 by zayaz            ###   ########.fr       */
+/*   Updated: 2025/02/04 17:47:21 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,16 @@ static void allocate_map(t_data *data)
     data->cub_map.map = (char **)malloc((data->cub_map.map_row + 1) * sizeof(char *));
     if (data->cub_map.map == NULL)
     {
+        free(data);
         error_message("Map allocation failed! 🥺\n");
     }
 
     data->cub_map.cpymap = (char **)malloc((data->cub_map.map_row + 1) * sizeof(char *));
     if (data->cub_map.cpymap == NULL)
     {
-        error_message("Map allocation failed! 🥺\n");
         free(data->cub_map.map);
+        free(data);
+        error_message("Map allocation failed! 🥺\n");
     }
 }
 
@@ -37,7 +39,10 @@ static void fill_map(t_data *data)
     i = 0;
     fd = open(data->path, O_RDONLY);
     if (fd == -1)
-        return;
+    {
+        free(data);
+        error_message("Not open file! 🥺\n");
+    }
     line = get_next_line(fd);
     line = go_pass_textures(line, fd); 
     allocate_map(data);
@@ -63,7 +68,10 @@ static void map_row_count(t_data *data, int fd)
 
     fd = open(data->path, O_RDONLY);
     if (fd == -1)
-        return;
+    {
+        free(data);
+        error_message("Not open file! 🥺\n");
+    }
     line = get_next_line(fd);
     line = go_pass_textures(line, fd);
     while (line != NULL)
@@ -77,13 +85,16 @@ static void map_row_count(t_data *data, int fd)
     close(fd);
 }
 
-int map_check(t_data *data)
+void  map_check(t_data *data)
 {
     int fd;
 
     fd = open(data->path, O_RDONLY);
     if (fd == -1)
-        return (0);
+    {
+        free(data);
+        error_message("Not open file! 🥺\n");
+    }
     map_row_count(data, fd);
     character_check(data);
     player_check(data);
@@ -92,5 +103,4 @@ int map_check(t_data *data)
     map_close_check(data);
     flood_fill_check(data);
     close(fd);
-    return (1);
 }

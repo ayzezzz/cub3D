@@ -1,6 +1,6 @@
 NAME = cub3D
 CC = cc
-CFLAGS = -Wall -Wextra -Werror #-fsanitize=address -g
+CFLAGS = -Wall -Wextra -Werror #-fsanitize=leak -g
 MINIFLAGS = -Llib/minilibx_linux -lmlx -L/usr/lib -Ilib/minilibx_linux -lXext -lX11 -lm -lz
 #-fsanitize=address
 RM = rm -rf
@@ -9,7 +9,6 @@ SRCS = cub3d.c\
 		./parser/control1.c\
 		./lib/get_next_line/get_next_line_utils.c\
 		./lib/get_next_line/get_next_line.c\
-		./parser/cub_check.c\
 		./parser/map_check.c\
 		./parser/texture_control.c\
 		./parser/format_control.c\
