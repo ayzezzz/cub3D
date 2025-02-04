@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 18:09:31 by itulgar           #+#    #+#             */
-/*   Updated: 2025/02/04 17:41:55 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/02/04 20:20:00 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,9 +146,9 @@ typedef struct s_data
 
 void error_message(char *str);
 void file_path_control(char *argv);
-int texture_count_check(t_data *data);
+void texture_count_check(t_data *data);
 void map_check(t_data *data);
-char *find_texture_path(t_data *data, char *clean_str);
+char *find_texture_path(char *clean_str);
 void textures_free(t_data *data);
 void map_free(t_data *data, char *line, int fd);
 int is_xpm_file(t_data *data);
@@ -182,4 +182,5 @@ void turn_left(t_data *data);
 void turn_right(t_data *data);
 void b_map_check(t_data *data);
 void check_vertical_boundaries(t_data *data);
+void free_texture_check(t_data *data, char *str, char *clean_str, int fd);
 #endif

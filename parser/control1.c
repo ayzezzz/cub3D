@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 20:01:34 by itulgar           #+#    #+#             */
-/*   Updated: 2025/01/26 11:53:54 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/02/04 19:56:12 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void file_path_control(char *argv)
     fd = open(argv,O_RDONLY);
     str = get_next_line(fd);
     if(str  == NULL)
-       error_message("Empty file 🥺\n");
+        error_message("Empty file 🥺\n");
     else
     {
         free(str);
