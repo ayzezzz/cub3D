@@ -3,16 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   map_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
+/*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 11:53:49 by zayaz             #+#    #+#             */
-/*   Updated: 2025/02/03 19:22:33 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/02/04 13:07:02 by zayaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../lib/cub3D.h"
 
-void fill_map(t_data *data)
+static void allocate_map(t_data *data)
+{
+    data->cub_map.map = (char **)malloc((data->cub_map.map_row + 1) * sizeof(char *));
+    if (data->cub_map.map == NULL)
+    {
+        error_message("Map allocation failed! 🥺\n");
+    }
+
+    data->cub_map.cpymap = (char **)malloc((data->cub_map.map_row + 1) * sizeof(char *));
+    if (data->cub_map.cpymap == NULL)
+    {
+        error_message("Map allocation failed! 🥺\n");
+        free(data->cub_map.map);
+    }
+}
+
+static void fill_map(t_data *data)
 {
     char *line;
     int fd;
@@ -20,10 +36,11 @@ void fill_map(t_data *data)
 
     i = 0;
     fd = open(data->path, O_RDONLY);
+    if (fd == -1)
+        return;
     line = get_next_line(fd);
-    line = go_pass_textures(line, fd);
-    data->cub_map.map = (char **)malloc((data->cub_map.map_row + 1) * sizeof(char *));
-    data->cub_map.cpymap = (char **)malloc((data->cub_map.map_row + 1) * sizeof(char *));
+    line = go_pass_textures(line, fd); 
+    allocate_map(data);
     while (line)
     {
         if (line != NULL)
@@ -40,16 +57,14 @@ void fill_map(t_data *data)
     data->cub_map.cpymap[i] = NULL;
 }
 
+
 static void map_row_count(t_data *data, int fd)
 {
     char *line = NULL;
 
     fd = open(data->path, O_RDONLY);
-    if (fd < 0)
-    {
-        perror("Error opening file");
+    if (fd == -1)
         return;
-    }
     line = get_next_line(fd);
     line = go_pass_textures(line, fd);
     while (line != NULL)
@@ -67,7 +82,8 @@ int map_check(t_data *data)
 {
     int fd;
     fd = open(data->path, O_RDONLY);
-
+    if (fd == -1)
+        return (0);
     map_row_count(data, fd);
     character_check(data);
     player_check(data);
@@ -76,5 +92,5 @@ int map_check(t_data *data)
     map_close_check(data);
     flood_fill_check(data);
     close(fd);
-    return 1;
+    return (1);
 }
