@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 13:39:54 by itulgar           #+#    #+#             */
-/*   Updated: 2025/01/29 16:33:31 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/02/04 20:31:40 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,11 @@ char **find_color_num(t_data *data,char* clean_str)
     while(i < 3){
         tmp = ft_strtrim(int_str[i]," \n"); 
         num = ft_atoi(tmp);
-        if (ft_strlen(tmp) > 3 || !(num >= 0  && num <= 255))
-            error_message("Must be in 0 - 255 format! 🥺\n");
+        if (ft_strlen(tmp) > 3 || !(num >= 0  && num <= 255)){
+            double_str_free(int_str);
+            free(tmp);
+            return NULL;
+        }
         free(tmp);
         i++;
     } 

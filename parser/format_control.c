@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 18:39:17 by itulgar           #+#    #+#             */
-/*   Updated: 2025/02/04 19:10:16 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/02/04 20:15:45 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,20 +82,17 @@ static char *is_xpm_check(char **str,char *path)
     return path; 
 }
 
-char *find_texture_path(t_data *data,char *clean_str)
+char *find_texture_path(char *clean_str)
 {
     char *path = NULL;
     char **str;
-
     str = ft_split(clean_str,32);
     if(((str[0][0] == '.' && (str[0][1] &&  str[0][1] == '/')) ||  (str[0][0] == '/')) && str[1] == NULL)
         path = is_xpm_check(str,path);
     if(!path)
     {
         double_str_free(str);
-        textures_free(data);
-        free(data);
-        return error_message("Invalid path yedim 🥺\n"),NULL;
+        return NULL;
     }
     return path;
 }
