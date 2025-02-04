@@ -6,12 +6,12 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 12:38:41 by zayaz             #+#    #+#             */
-/*   Updated: 2025/01/20 15:16:17 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/02/03 18:08:36 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>
+
 char	*ft_readfd(int fd, char *stc)
 {
 	char	*buffer;

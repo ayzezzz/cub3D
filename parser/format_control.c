@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 18:39:17 by itulgar           #+#    #+#             */
-/*   Updated: 2025/01/26 12:27:45 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/02/03 17:34:16 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static int is_open_file(char *path)
 
     if(fd < 0)
     {
+        printf("küçük\n");
         close(fd);
         return 0;
     }
@@ -33,7 +34,7 @@ static int xpm_loop(t_data *data,char *path)
     i = ft_strlen(path) -1;
     if(path[i] == 'm' && path[i - 1] == 'p' && path[i - 2] == 'x' && path[i - 3] == '.')
     {
-        if(!is_open_file(data->textures.no) || !is_open_file(data->textures.so) || !is_open_file(data->textures.ea) || !is_open_file(data->textures.we)) 
+        if(!is_open_file(path)) 
         {
             textures_free(data);
             free(data);
@@ -94,7 +95,7 @@ char *find_texture_path(t_data *data,char *clean_str)
         double_str_free(str);
         textures_free(data);
         free(data);
-        return error_message("invalid character 🥺\n"),NULL;
+        return error_message("Invalid path 🥺\n"),NULL;
     }
     return path;
 }

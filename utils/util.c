@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:50:56 by itulgar           #+#    #+#             */
-/*   Updated: 2025/02/02 18:22:24 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/02/03 15:26:44 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,6 @@ int close_window(t_data *data)
     free_image(data->cub_mlx);
     free(data->cub_mlx);
     free_data(data);
-    printf("biyyy ehe 😸\n");
+    printf("GAME OVER BY BY 😎\n");
     exit(0);
 }

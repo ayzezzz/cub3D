@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 15:19:15 by itulgar           #+#    #+#             */
-/*   Updated: 2025/02/02 19:41:17 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/02/03 18:52:26 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void find_dir2(t_data *data)
     data->player.dir_x = 1;
     data->player.dir_y = 0;
     data->player.plane_x = 0;
-    data->player.plane_y = 0.66;
+    data->player.plane_y = -0.66;
   }
   else if(data->player.p_dir == 'W')
   {
@@ -34,7 +34,6 @@ void find_dir(t_data *data)
 {
   data->key.move_speed = 0.032;
   data->key.dir_speed = 0.03;
-
   if(data->player.p_dir == 'N')
   {
     data->player.dir_x = 0;

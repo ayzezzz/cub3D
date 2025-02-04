@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 18:46:39 by itulgar           #+#    #+#             */
-/*   Updated: 2025/02/02 19:48:02 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/02/03 19:20:59 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void turn_right(t_data *data)
 
 void turn_left(t_data *data)
 {
-    double before_dir_x;
+   double before_dir_x;
    double before_plane_x;
 
    before_dir_x = data->player.dir_x;
