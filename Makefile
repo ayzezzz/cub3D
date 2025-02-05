@@ -27,7 +27,8 @@ SRCS = cub3d.c\
 		./game/game_move.c\
 		./game/game_move_2.c\
 		./parser/map_check_utils_2.c\
-		./utils/utils_2.c
+		./utils/utils_2.c\
+		./parser/texture_control_3.c
 
 MLX = ./lib/minilibx_linux/libmlx.a
 OBJS = $(SRCS:.c=.o)
