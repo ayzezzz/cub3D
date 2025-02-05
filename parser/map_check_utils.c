@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 14:58:06 by zayaz             #+#    #+#             */
-/*   Updated: 2025/02/03 19:31:25 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/02/05 18:53:55 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,17 +55,10 @@ char *go_pass_textures(char *line, int fd)
 
 void map_free(t_data *data, char *line, int fd)
 {
-    free(line);
+    go_gnl_last(fd, line);
+    if(line)
+        free(line);
     textures_free(data);
     free(data);
     close(fd);
-}
-
-void free_data(t_data *data)
-{
-    textures_free(data);
-    double_str_free(data->cub_map.b_map);
-    double_str_free(data->cub_map.map);
-    double_str_free(data->cub_map.cpymap);
-    free(data);
 }

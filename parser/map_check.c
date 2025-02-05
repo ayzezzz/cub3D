@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 11:53:49 by zayaz             #+#    #+#             */
-/*   Updated: 2025/02/04 17:47:21 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/02/05 18:54:23 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,6 @@ static void fill_map(t_data *data)
 
     i = 0;
     fd = open(data->path, O_RDONLY);
-    if (fd == -1)
-    {
-        free(data);
-        error_message("Not open file! 🥺\n");
-    }
     line = get_next_line(fd);
     line = go_pass_textures(line, fd);
     allocate_map(data);
@@ -67,11 +62,6 @@ static void map_row_count(t_data *data, int fd)
     char *line = NULL;
 
     fd = open(data->path, O_RDONLY);
-    if (fd == -1)
-    {
-        free(data);
-        error_message("Not open file! 🥺\n");
-    }
     line = get_next_line(fd);
     line = go_pass_textures(line, fd);
     while (line != NULL)
@@ -90,11 +80,6 @@ void map_check(t_data *data)
     int fd;
 
     fd = open(data->path, O_RDONLY);
-    if (fd == -1)
-    {
-        free(data);
-        error_message("Not open file! 🥺\n");
-    }
     map_row_count(data, fd);
     character_check(data);
     player_check(data);

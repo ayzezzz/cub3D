@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 14:47:38 by zayaz             #+#    #+#             */
-/*   Updated: 2025/02/04 17:47:44 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/02/05 18:54:39 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,12 @@ void character_check(t_data *data)
 {
     char *line;
     int fd = open(data->path, O_RDONLY);
-    if (fd == -1)
-    {
-        free(data);
-        error_message("Not open file! 🥺\n");
-    }
     line = get_next_line(fd);
     line = go_pass_textures(line, fd);
     if (!line)
     {
         map_free(data, line, fd);
-        error_message("Map not found!\n");
+        error_message("Map not found! 🥺\n");
     }
     while (line)
     {
@@ -73,11 +68,6 @@ void player_check(t_data *data)
     int player_count = 0;
     char *line;
     int fd = open(data->path, O_RDONLY);
-    if (fd == -1)
-    {
-        free(data);
-        error_message("Not open file! 🥺\n");
-    }
     line = get_next_line(fd);
     line = go_pass_textures(line, fd);
     while (line)
@@ -93,4 +83,28 @@ void player_check(t_data *data)
     }
     free(line);
     close(fd);
+}
+
+void player_loc(t_data *data)
+{
+    int i;
+    int j;
+
+    j = 0;
+    i = 0;
+    while (data->cub_map.map && data->cub_map.map[i])
+    {
+        j = 0;
+        while (data->cub_map.map[i] && data->cub_map.map[i][j])
+        {
+            if (data->cub_map.map[i][j] == 'N' || data->cub_map.map[i][j] == 'S' || data->cub_map.map[i][j] == 'E' || data->cub_map.map[i][j] == 'W')
+            {
+                data->player.p_x = j + 0.5;
+                data->player.p_y = i + 0.5;
+                data->player.p_dir = data->cub_map.map[i][j];
+            }
+            j++;
+        }
+        i++;
+    }
 }

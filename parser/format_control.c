@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 18:39:17 by itulgar           #+#    #+#             */
-/*   Updated: 2025/02/04 20:15:45 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/02/05 14:47:29 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ static int is_open_file(char *path)
 
     if (fd < 0)
     {
-        printf("küçük\n");
         close(fd);
         return 0;
     }

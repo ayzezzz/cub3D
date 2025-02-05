@@ -5,12 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/11 18:09:16 by itulgar           #+#    #+#             */
-/*   Updated: 2025/02/04 19:58:19 by itulgar          ###   ########.fr       */
+/*   Created: 2025/02/05 12:36:09 by itulgar           #+#    #+#             */
+/*   Updated: 2025/02/05 17:15:57 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "./lib/cub3D.h"
+
 
 static void cub_game(t_data *data)
 {
@@ -21,9 +23,6 @@ static void cub_game(t_data *data)
 static void cub_check(t_data *data)
 {
     texture_count_check(data);
-    textures_free(data);
-    free(data);
-    exit(1);
     is_xpm_file(data);
     map_check(data);
 }
@@ -37,6 +36,4 @@ int main(int argc, char **argv)
     data->path = argv[1];
     cub_check(data);
     cub_game(data);
-    free(data->rayc);
-    free_data(data);
 }

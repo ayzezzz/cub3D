@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_close_check_2.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 14:47:46 by zayaz             #+#    #+#             */
-/*   Updated: 2025/02/04 13:22:56 by zayaz            ###   ########.fr       */
+/*   Updated: 2025/02/05 15:13:50 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void b_map_check(t_data *data)
                     (j > 0 && data->cub_map.b_map[i][j - 1] == 'B') ||
                     (j < data->cub_map.b_row - 1 && data->cub_map.b_map[i][j + 1] == 'B'))
                 {
-                    free_data(data);
+                    fill_map_free(data);
                     error_message("Map is not closed! 🥺\n");
                 }
             }

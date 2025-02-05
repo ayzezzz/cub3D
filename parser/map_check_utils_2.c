@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   map_check_utils_2.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 17:12:59 by zayaz             #+#    #+#             */
-/*   Updated: 2025/02/04 17:14:19 by zayaz            ###   ########.fr       */
+/*   Updated: 2025/02/05 15:48:39 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../lib/cub3D.h"
 
-static int check_above_boundary(t_data *data)
+int check_above_boundary(t_data *data)
 {
     int i = data->player.p_b_y;
 
@@ -25,7 +25,7 @@ static int check_above_boundary(t_data *data)
     return 0;
 }
 
-static int check_down_boundary(t_data *data)
+int check_down_boundary(t_data *data)
 {
     int i = data->player.p_b_y + 1;
 
@@ -38,14 +38,43 @@ static int check_down_boundary(t_data *data)
     return 0;
 }
 
-void check_vertical_boundaries(t_data *data)
+int check_left_boundary(t_data *data)
 {
-    int close_above = check_above_boundary(data);
-    int close_down = check_down_boundary(data);
+    int j = data->player.p_b_x;
 
-    if (close_above != 1 || close_down != 1)
+    while (j >= 0)
     {
-        free_data(data);
-        error_message("Map is not closed! 🥺\n");
+        if (data->cub_map.b_map[data->player.p_b_y][j] == '1')
+            return 1;
+        j--;
     }
+    return 0;
+}
+
+int check_right_boundary(t_data *data)
+{
+    int j = data->player.p_b_x + 1;
+
+    while (j < data->cub_map.b_row)
+    {
+        if (data->cub_map.b_map[data->player.p_b_y][j] == '1')
+            return 1;
+        j++;
+    }
+    return 0;
+}
+
+
+void fill_map_free(t_data *data)
+{
+    if (data->cub_map.b_map)
+        double_str_free(data->cub_map.b_map);
+    if(data->cub_map.map)
+        double_str_free(data->cub_map.map);
+    if (data->cub_map.cpymap)
+        double_str_free(data->cub_map.cpymap);
+    textures_free(data);
+    if(data->rayc)
+        free(data->rayc);
+    free(data); 
 }

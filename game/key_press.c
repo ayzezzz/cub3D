@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 12:31:25 by itulgar           #+#    #+#             */
-/*   Updated: 2025/02/03 15:26:41 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/02/05 17:11:56 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,22 @@ int key_release(int keycode, t_data *data)
     return 0;
 }
 
+void free_data(t_data *data)
+{
+    textures_free(data);
+    double_str_free(data->cub_map.b_map);
+    double_str_free(data->cub_map.map);
+    double_str_free(data->cub_map.cpymap);
+    free(data);
+}
+
 int key_press(int keycode, t_data *data)
 {
     if (keycode == 65307)
     {
         free_image(data->cub_mlx);
         free(data->cub_mlx);
+      
         free_data(data);
         printf("GAME OVER BY BY 😎\n");
         exit(1);

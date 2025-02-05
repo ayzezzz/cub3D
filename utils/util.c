@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:50:56 by itulgar           #+#    #+#             */
-/*   Updated: 2025/02/03 15:26:44 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/02/05 17:12:55 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,10 @@ void free_image(t_mlx *cub_mlx)
     mlx_destroy_image(cub_mlx->mlx, cub_mlx->so);
     mlx_destroy_image(cub_mlx->mlx, cub_mlx->we);
     mlx_destroy_image(cub_mlx->mlx, cub_mlx->no);
+    mlx_destroy_window(cub_mlx->mlx,cub_mlx->window);
+    mlx_destroy_display(cub_mlx->mlx);
+    free(cub_mlx->mlx);
+    
     while (i < 4)
         free(cub_mlx->te_img[i++]);
     free(cub_mlx->te_img);

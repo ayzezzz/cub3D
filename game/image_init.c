@@ -6,7 +6,7 @@
 /*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 13:12:51 by itulgar           #+#    #+#             */
-/*   Updated: 2025/02/03 14:43:17 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/02/05 15:07:41 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,6 @@ void get_image(t_data *data)
 
 void addr_img(t_data *data, void *img_ptr, int index)
 {
-  // özür dileriz :(
-  // senden kaynaklı zannettik
-  // mlx_get_data_addr <3
   data->cub_mlx->te_img[index]->addr = (int *)mlx_get_data_addr(img_ptr, &data->cub_mlx->te_img[index]->bpp, &data->cub_mlx->te_img[index]->size_line, &data->cub_mlx->te_img[index]->endian);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_close_check.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 13:38:03 by zayaz             #+#    #+#             */
-/*   Updated: 2025/02/04 13:27:57 by zayaz            ###   ########.fr       */
+/*   Updated: 2025/02/05 15:14:02 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ static char **allocate_b_map(t_data *data)
     data->cub_map.b_map = malloc((data->cub_map.b_col + 1) * sizeof(char *));
     if (!data->cub_map.b_map)
     {
-        error_message("Memory allocation failed for b map! 🥺\n");
+        fill_map_free(data);
+        error_message("Memory allocation failed! 🥺\n");
         return NULL;
     }
 
@@ -28,8 +29,8 @@ static char **allocate_b_map(t_data *data)
         data->cub_map.b_map[i] = malloc((data->cub_map.b_row + 1) * sizeof(char));
         if (!data->cub_map.b_map[i])
         {
-            free_data(data);
-            error_message("Memory allocation failed for b map row! 🥺\n");
+            fill_map_free(data);
+            error_message("Memory allocation failed! 🥺\n");
             return NULL;
         }
         i++;
@@ -69,8 +70,8 @@ static void check_and_copy_map_data(t_data *data, int i, int j)
     }
     else
     {
-        free_data(data);
-        error_message("NULL pointer detected while copying map data! 🥺\n");
+        fill_map_free(data);
+        error_message("NULL pointer! 🥺\n");
         return;
     }
 }
