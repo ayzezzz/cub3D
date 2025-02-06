@@ -3,40 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
+/*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/11 18:09:16 by itulgar           #+#    #+#             */
-/*   Updated: 2025/02/04 19:58:19 by itulgar          ###   ########.fr       */
+/*   Created: 2025/02/05 19:41:23 by zayaz             #+#    #+#             */
+/*   Updated: 2025/02/05 20:02:10 by zayaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./lib/cub3D.h"
 
-static void cub_game(t_data *data)
+static void	cub_game(t_data *data)
 {
-    find_dir(data);
-    game_start(data);
+	find_dir(data);
+	game_start(data);
 }
 
-static void cub_check(t_data *data)
+static void	cub_check(t_data *data)
 {
-    texture_count_check(data);
-    textures_free(data);
-    free(data);
-    exit(1);
-    is_xpm_file(data);
-    map_check(data);
+	texture_count_check(data);
+	is_xpm_file(data);
+	map_check(data);
 }
-int main(int argc, char **argv)
+
+int	main(int argc, char **argv)
 {
-    if (argc != 2)
-        error_message("Invalid Argumanet!!! 🥺\n");
-    file_path_control(argv[1]);
-    t_data *data;
-    data = (t_data *)ft_calloc(1, sizeof(t_data));
-    data->path = argv[1];
-    cub_check(data);
-    cub_game(data);
-    free(data->rayc);
-    free_data(data);
+	t_data	*data;
+
+	if (argc != 2)
+		error_message("Invalid Argumanet!!! 🥺\n");
+	file_path_control(argv[1]);
+	data = (t_data *)ft_calloc(1, sizeof(t_data));
+	data->path = argv[1];
+	cub_check(data);
+	cub_game(data);
 }

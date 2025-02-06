@@ -6,111 +6,100 @@
 /*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 17:56:19 by itulgar           #+#    #+#             */
-/*   Updated: 2025/02/04 17:14:01 by zayaz            ###   ########.fr       */
+/*   Updated: 2025/02/05 20:26:40 by zayaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../lib/cub3D.h"
 
-static void player_place(t_data *data)
+static void	check_player_boundary(t_data *data)
 {
-    if (data->player.p_b_x == 1 || (int)data->player.p_b_x == data->cub_map.b_row - 2)
-    {
-        free_data(data);
-        error_message("Map is not closed! 🥺\n");
-    }
-    if (data->player.p_b_y == 1 || (int)data->player.p_b_y == data->cub_map.b_col - 2)
-    {
-        free_data(data);
-        error_message("Map is not closed! 🥺\n");
-    }
+	int	close_above;
+	int	close_down;
+	int	close_left;
+	int	close_right;
+
+	close_above = check_above_boundary(data);
+	close_down = check_down_boundary(data);
+	close_left = check_left_boundary(data);
+	close_right = check_right_boundary(data);
+	if (close_above != 1 || close_down != 1 || close_left != 1
+		|| close_right != 1)
+	{
+		fill_map_free(data);
+		error_message("Map is not closed! 🥺\n");
+	}
 }
 
-static void player_b_loc(t_data *data)
+static void	player_b_loc(t_data *data)
 {
-    int i;
-    int j;
+	int	i;
+	int	j;
 
-    j = 0;
-    i = 0;
-    while (data->cub_map.b_map && data->cub_map.b_map[i])
-    {
-        j = 0;
-        while (data->cub_map.b_map[i] && data->cub_map.b_map[i][j])
-        {
-            if (data->cub_map.b_map[i][j] == 'N' || data->cub_map.b_map[i][j] == 'S' || data->cub_map.b_map[i][j] == 'E' || data->cub_map.b_map[i][j] == 'W')
-            {
-                data->player.p_b_x = j;
-                data->player.p_b_y = i;
-            }
-            j++;
-        }
-        i++;
-    }
-    player_place(data);
-    check_vertical_boundaries(data);
-}
-void player_loc(t_data *data)
-{
-    int i;
-    int j;
-
-    j = 0;
-    i = 0;
-    while (data->cub_map.map && data->cub_map.map[i])
-    {
-        j = 0;
-        while (data->cub_map.map[i] && data->cub_map.map[i][j])
-        {
-            if (data->cub_map.map[i][j] == 'N' || data->cub_map.map[i][j] == 'S' || data->cub_map.map[i][j] == 'E' || data->cub_map.map[i][j] == 'W')
-            {
-                data->player.p_x = j + 0.5;
-                data->player.p_y = i + 0.5;
-                data->player.p_dir = data->cub_map.map[i][j];
-            }
-            j++;
-        }
-        i++;
-    }
+	j = 0;
+	i = 0;
+	while (data->cub_map.b_map && data->cub_map.b_map[i])
+	{
+		j = 0;
+		while (data->cub_map.b_map[i] && data->cub_map.b_map[i][j])
+		{
+			if (data->cub_map.b_map[i][j] == 'N'
+				|| data->cub_map.b_map[i][j] == 'S'
+				|| data->cub_map.b_map[i][j] == 'E'
+				|| data->cub_map.b_map[i][j] == 'W')
+			{
+				data->player.p_b_x = j;
+				data->player.p_b_y = i;
+			}
+			j++;
+		}
+		i++;
+	}
+	check_player_boundary(data);
 }
 
-static void flood_fill(t_data *data, int x, int y)
+static void	flood_fill(t_data *data, int x, int y)
 {
-    if (data->cub_map.b_map[y][x] == 'B' || data->cub_map.b_map[y][x] == '*')
-    {
-        return;
-    }
-    data->cub_map.b_map[y][x] = '*';
-
-    flood_fill(data, x + 1, y);
-    flood_fill(data, x - 1, y);
-    flood_fill(data, x, y + 1);
-    flood_fill(data, x, y - 1);
+	if (data->cub_map.b_map[y][x] == 'B' || data->cub_map.b_map[y][x] == '*')
+		return ;
+	data->cub_map.b_map[y][x] = '*';
+	flood_fill(data, x + 1, y);
+	flood_fill(data, x - 1, y);
+	flood_fill(data, x, y + 1);
+	flood_fill(data, x, y - 1);
 }
 
-void flood_fill_check(t_data *data)
+static void	start_flood_fill(t_data *data)
 {
-    int i;
-    int j;
+	player_b_loc(data);
+	flood_fill(data, data->player.p_b_x, data->player.p_b_y);
+}
 
-    i = 0;
-    j = 0;
-    player_b_loc(data);
-    flood_fill(data, data->player.p_b_x, data->player.p_b_y);
-    while (data->cub_map.b_map[i])
-    {
-        j = 0;
-        while (data->cub_map.b_map[i][j])
-        {
-            if (data->cub_map.b_map[i][j] == '1' || data->cub_map.b_map[i][j] == '0' ||
-                data->cub_map.b_map[i][j] == 'N' || data->cub_map.b_map[i][j] == 'S' ||
-                data->cub_map.b_map[i][j] == 'W' || data->cub_map.b_map[i][j] == 'E')
-            {
-                free_data(data);
-                error_message("Multi map! 🥺\n");
-            }
-            j++;
-        }
-        i++;
-    }
+void	flood_fill_check(t_data *data)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	start_flood_fill(data);
+	while (data->cub_map.b_map[i])
+	{
+		j = 0;
+		while (data->cub_map.b_map[i][j])
+		{
+			if (data->cub_map.b_map[i][j] == '1'
+				|| data->cub_map.b_map[i][j] == '0'
+				|| data->cub_map.b_map[i][j] == 'N'
+				|| data->cub_map.b_map[i][j] == 'S'
+				|| data->cub_map.b_map[i][j] == 'W'
+				|| data->cub_map.b_map[i][j] == 'E')
+			{
+				fill_map_free(data);
+				error_message("Multi map! 🥺\n");
+			}
+			j++;
+		}
+		i++;
+	}
 }

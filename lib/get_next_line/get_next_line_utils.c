@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
+/*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 12:38:45 by zayaz             #+#    #+#             */
-/*   Updated: 2025/02/04 19:11:11 by itulgar          ###   ########.fr       */
+/*   Updated: 2025/02/05 19:41:40 by zayaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ char	*ftg_strjoin(char *s1, char *s2)
 		s1 = malloc(1 + sizeof(char));
 		*s1 = '\0';
 	}
-	str = (char *)malloc(sizeof(char) * ((ftg_strlen(s1) + ftg_strlen(s2)) + 1));
+	str = (char *)malloc(sizeof(char) * ((ftg_strlen(s1) + ftg_strlen(s2))
+				+ 1));
 	if (!str)
 		return (NULL);
 	i = -1;
