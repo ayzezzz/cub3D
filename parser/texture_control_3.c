@@ -6,7 +6,7 @@
 /*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 20:13:41 by zayaz             #+#    #+#             */
-/*   Updated: 2025/02/05 20:27:08 by zayaz            ###   ########.fr       */
+/*   Updated: 2025/02/06 12:13:55 by zayaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,11 @@ int	check_color_values(char **int_str)
 	return (1);
 }
 
-char	**find_color_num(char *clean_str)
+char	**find_color_num(t_data *data, char *clean_str, int type)
 {
 	char	**int_str;
 
+	data->textures.check_list[type] += 1;
 	int_str = ft_split(clean_str, ',');
 	if (!is_two_comma(clean_str) || !is_invalid_character(int_str))
 		return (double_str_free(int_str), NULL);
@@ -52,7 +53,7 @@ char	**find_color_num(char *clean_str)
 	return (int_str);
 }
 
-void getter_texture(t_data *data,char *clean_str,int index,char **texture)
+void	getter_texture(t_data *data, char *clean_str, int index, char **texture)
 {
 	data->textures.check_list[index] += 1;
 	if (data->textures.check_list[index] == 1)

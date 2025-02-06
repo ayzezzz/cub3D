@@ -6,13 +6,13 @@
 /*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 13:39:54 by itulgar           #+#    #+#             */
-/*   Updated: 2025/02/05 20:25:54 by zayaz            ###   ########.fr       */
+/*   Updated: 2025/02/06 12:12:11 by zayaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../lib/cub3D.h"
 
-int	texture_error(t_data *data, char *clean_str)
+int	texture_error(t_data *data, char *clean_str, char *str, int fd)
 {
 	int	set;
 
@@ -20,9 +20,11 @@ int	texture_error(t_data *data, char *clean_str)
 	if (set)
 	{
 		if (set == 2)
-			return (printf("Color format error! 🥺\n"), 0);
+			printf("Color format error! 🥺\n");
 		else if (set == 1)
-			return (printf("Invalid path error! 🥺\n"), 0);
+			printf("Invalid path error! 🥺\n");
+		free_texture_check(data, str, clean_str, fd);
+		return (0);
 	}
 	return (1);
 }

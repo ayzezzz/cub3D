@@ -6,7 +6,7 @@
 /*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 18:39:17 by itulgar           #+#    #+#             */
-/*   Updated: 2025/02/05 19:35:42 by zayaz            ###   ########.fr       */
+/*   Updated: 2025/02/06 11:24:01 by zayaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,9 @@ static int	xpm_loop(t_data *data, char *path)
 {
 	size_t	i;
 
-	i = 0;
 	i = ft_strlen(path) - 1;
-	if (path[i] == 'm' && path[i - 1] == 'p' && path[i - 2] == 'x' && path[i
-		- 3] == '.')
+	if (path[i] == 'm' && path[i - 1] == 'p' && path[i - 2] == 'x'
+		&& path[i - 3] == '.')
 	{
 		if (!is_open_file(path))
 		{

@@ -6,7 +6,7 @@
 /*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 14:47:38 by zayaz             #+#    #+#             */
-/*   Updated: 2025/02/05 19:20:05 by zayaz            ###   ########.fr       */
+/*   Updated: 2025/02/06 12:49:48 by zayaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ static void	check_line_for_invalid_chars(t_data *data, char *line, int fd)
 		{
 			map_free(data, line, fd);
 			error_message("Invalid character! 🥺\n");
-			return ;
 		}
 		i++;
 	}
@@ -35,6 +34,7 @@ void	character_check(t_data *data)
 {
 	char	*line;
 	int		fd;
+	int		i;
 
 	fd = open(data->path, O_RDONLY);
 	line = get_next_line(fd);
@@ -44,11 +44,13 @@ void	character_check(t_data *data)
 		map_free(data, line, fd);
 		error_message("Map not found! 🥺\n");
 	}
+	i = 0;
 	while (line)
 	{
 		check_line_for_invalid_chars(data, line, fd);
 		free(line);
 		line = get_next_line(fd);
+		i++;
 	}
 	go_gnl_last(fd, line);
 	close(fd);
