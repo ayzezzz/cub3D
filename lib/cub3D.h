@@ -6,7 +6,7 @@
 /*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 18:09:31 by itulgar           #+#    #+#             */
-/*   Updated: 2025/02/05 20:27:18 by zayaz            ###   ########.fr       */
+/*   Updated: 2025/02/06 12:14:08 by zayaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # include <stdio.h>
 # include <stdlib.h>
 
-#define S_WIDTH  1920
-#define S_HEIGHT 1080
+# define S_WIDTH 1920
+# define S_HEIGHT 1080
 
 # define NO 0
 # define SO 1
@@ -170,7 +170,7 @@ void			free_data(t_data *data);
 void			fill_map_free(t_data *data);
 void			map_free(t_data *data, char *line, int fd);
 void			double_str_free(char **str);
-char			**find_color_num(char *clean_str);
+char			**find_color_num(t_data *data, char *clean_str, int type);
 void			player_check(t_data *data);
 void			find_dir(t_data *data);
 void			game_start(t_data *data);
@@ -189,10 +189,11 @@ void			turn_left(t_data *data);
 void			turn_right(t_data *data);
 void			free_texture_check(t_data *data, char *str, char *clean_str,
 					int fd);
-int				texture_error(t_data *data, char *clean_str);
+int				texture_error(t_data *data, char *clean_str, char *str, int fd);
 int				set_texture(t_data *data, char *clean_str);
-void getter_texture(t_data *data,char *clean_str,int index,char **texture);
-int	is_two_comma(char *clean_str);
-int	is_invalid_character(char **int_str);
-int	comma_in_fill(char **int_str);
+void			getter_texture(t_data *data, char *clean_str, int index,
+					char **texture);
+int				is_two_comma(char *clean_str);
+int				is_invalid_character(char **int_str);
+int				comma_in_fill(char **int_str);
 #endif
