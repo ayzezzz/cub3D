@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_control.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 16:00:45 by itulgar           #+#    #+#             */
-/*   Updated: 2025/02/06 12:14:35 by zayaz            ###   ########.fr       */
+/*   Updated: 2025/02/07 15:07:22 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,18 +38,18 @@ static int	is_fill_textures(t_data *data)
 
 int	set_texture(t_data *data, char *clean_str)
 {
-	if (clean_str[0] == 'N' && clean_str[1] == 'O' && clean_str[2] == ' ')
-		getter_texture(data, clean_str, NO, &data->textures.no);
-	else if (clean_str[0] == 'S' && clean_str[1] == 'O' && clean_str[2] == ' ')
-		getter_texture(data, clean_str, SO, &data->textures.so);
-	else if (clean_str[0] == 'W' && clean_str[1] == 'E' && clean_str[2] == ' ')
-		getter_texture(data, clean_str, WE, &data->textures.we);
-	else if (clean_str[0] == 'E' && clean_str[1] == 'A' && clean_str[2] == ' ')
-		getter_texture(data, clean_str, EA, &data->textures.ea);
-	else if (clean_str[0] == 'F' && clean_str[1] == ' ')
-		data->textures.f = find_color_num(data, clean_str + 2, F);
-	else if (clean_str[0] == 'C' && clean_str[1] == ' ')
-		data->textures.c = find_color_num(data, clean_str + 2, C);
+	if (clean_str[0] == 'N' && clean_str[1] == 'O')
+		getter_texture(data, clean_str + 2, NO, &data->textures.no);
+	else if (clean_str[0] == 'S' && clean_str[1] == 'O')
+		getter_texture(data, clean_str + 2, SO, &data->textures.so);
+	else if (clean_str[0] == 'W' && clean_str[1] == 'E')
+		getter_texture(data, clean_str + 2, WE, &data->textures.we);
+	else if (clean_str[0] == 'E' && clean_str[1] == 'A')
+		getter_texture(data, clean_str + 2, EA, &data->textures.ea);
+	else if (clean_str[0] == 'F')
+		data->textures.f = find_color_num(data, clean_str + 1, F);
+	else if (clean_str[0] == 'C')
+		data->textures.c = find_color_num(data, clean_str + 1, C);
 	if ((!data->textures.no || !data->textures.so || !data->textures.we
 			|| !data->textures.ea) && is_fill_textures(data))
 		return (1);

@@ -6,7 +6,7 @@
 /*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 18:09:31 by itulgar           #+#    #+#             */
-/*   Updated: 2025/02/06 12:14:08 by zayaz            ###   ########.fr       */
+/*   Updated: 2025/02/07 20:26:38 by zayaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,7 +163,6 @@ int				max_row_lenght(t_data *data);
 int				max_col_length(t_data *data);
 void			flood_fill_check(t_data *data);
 void			character_check(t_data *data);
-int				is_there_char(char *line);
 void			b_map_check(t_data *data);
 
 void			free_data(t_data *data);
@@ -178,7 +177,6 @@ int				key_press(int keycode, t_data *data);
 int				close_window(t_data *data);
 void			image_init(t_data *data);
 void			free_image(t_mlx *cub_mlx);
-void			horizon_line(t_data *data);
 int				image_loop(t_data *data);
 void			raycasting(t_data *data);
 void			set_pixel(t_data *data, int line_h, int side);
@@ -196,4 +194,7 @@ void			getter_texture(t_data *data, char *clean_str, int index,
 int				is_two_comma(char *clean_str);
 int				is_invalid_character(char **int_str);
 int				comma_in_fill(char **int_str);
+void			check_player_boundary(t_data *data);
+void			free_xpm_loop(t_data *data);
+
 #endif

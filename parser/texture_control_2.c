@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_control_2.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 13:39:54 by itulgar           #+#    #+#             */
-/*   Updated: 2025/02/06 12:12:11 by zayaz            ###   ########.fr       */
+/*   Updated: 2025/02/07 15:08:01 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,11 @@ int	texture_error(t_data *data, char *clean_str, char *str, int fd)
 	if (set)
 	{
 		if (set == 2)
-			printf("Color format error! 🥺\n");
+			printf("Error\nColor format error! 🥺\n");
 		else if (set == 1)
-			printf("Invalid path error! 🥺\n");
+			printf("Error\nInvalid textures error! 🥺\n");
 		free_texture_check(data, str, clean_str, fd);
+		close(fd);
 		return (0);
 	}
 	return (1);

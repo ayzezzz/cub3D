@@ -6,7 +6,7 @@
 /*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 19:38:58 by zayaz             #+#    #+#             */
-/*   Updated: 2025/02/05 19:50:06 by zayaz            ###   ########.fr       */
+/*   Updated: 2025/02/06 20:19:03 by zayaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ static int	dda_algorithm(t_data *data)
 	return (side);
 }
 
-void	draw_wall(t_data *data, int side, int col)
+static void	draw_wall(t_data *data, int side, int col)
 {
 	int	line_h;
 

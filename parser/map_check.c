@@ -6,7 +6,7 @@
 /*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 11:53:49 by zayaz             #+#    #+#             */
-/*   Updated: 2025/02/05 19:21:06 by zayaz            ###   ########.fr       */
+/*   Updated: 2025/02/07 14:31:15 by zayaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ static void	fill_map(t_data *data)
 	{
 		if (line != NULL)
 		{
-			data->cub_map.map[i] = ft_strtrim(line, "\n");
-			data->cub_map.cpymap[i] = ft_strtrim(line, "\n");
+			data->cub_map.map[i] = ft_strdup(line);
+			data->cub_map.cpymap[i] = ft_strdup(line);
 			free(line);
 			i++;
 		}

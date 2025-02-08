@@ -6,7 +6,7 @@
 /*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 15:12:37 by itulgar           #+#    #+#             */
-/*   Updated: 2025/02/05 19:57:39 by zayaz            ###   ########.fr       */
+/*   Updated: 2025/02/06 20:18:30 by zayaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	set_rgb(char **color_type)
 	return (i);
 }
 
-void	horizon_line(t_data *data)
+static void	horizon_line(t_data *data)
 {
 	int	i;
 	int	j;

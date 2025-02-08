@@ -6,13 +6,13 @@
 /*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 18:41:20 by itulgar           #+#    #+#             */
-/*   Updated: 2025/02/05 19:58:11 by zayaz            ###   ########.fr       */
+/*   Updated: 2025/02/06 20:19:49 by zayaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../lib/cub3D.h"
 
-void	move_up(t_data *data)
+static void	move_up(t_data *data)
 {
 	double	x;
 	double	y;
@@ -25,7 +25,7 @@ void	move_up(t_data *data)
 		data->player.p_y = y;
 }
 
-void	move_down(t_data *data)
+static void	move_down(t_data *data)
 {
 	double	x;
 	double	y;
@@ -38,7 +38,7 @@ void	move_down(t_data *data)
 		data->player.p_y = y;
 }
 
-void	move_left(t_data *data)
+static void	move_left(t_data *data)
 {
 	double	x;
 	double	y;
@@ -51,7 +51,7 @@ void	move_left(t_data *data)
 		data->player.p_y = y;
 }
 
-void	move_right(t_data *data)
+static void	move_right(t_data *data)
 {
 	double	x;
 	double	y;
