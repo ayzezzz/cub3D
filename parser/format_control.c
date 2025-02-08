@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   format_control.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: itulgar <itulgar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 18:39:17 by itulgar           #+#    #+#             */
-/*   Updated: 2025/02/06 11:24:01 by zayaz            ###   ########.fr       */
+/*   Updated: 2025/02/07 15:38:51 by itulgar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,8 @@ static int	is_open_file(char *path)
 	int	fd;
 
 	fd = open(path, O_RDONLY);
-	if (fd < 0)
-	{
-		close(fd);
+	if (fd == -1)
 		return (0);
-	}
 	close(fd);
 	return (1);
 }
@@ -36,18 +33,21 @@ static int	xpm_loop(t_data *data, char *path)
 	{
 		if (!is_open_file(path))
 		{
-			textures_free(data);
-			free(data);
-			return (error_message("Not open file 🥺\n"), 0);
+			free_xpm_loop(data);
+			return (error_message("File 🥺\n"), 0);
 		}
-		else
-			return (1);
+		else if ((ft_strncmp(path, ".xpm", ft_strlen(path)) == 0)
+			|| (path[i - 4] && path[i - 4] == '/'))
+		{
+			free_xpm_loop(data);
+			return (error_message("File 🥺\n"), 0);
+		}
+		return (1);
 	}
 	else
 	{
-		textures_free(data);
-		free(data);
-		return (error_message("Not with .xpm extension 🥺\n"), 0);
+		free_xpm_loop(data);
+		return (error_message("File 🥺\n"), 0);
 	}
 }
 
@@ -67,20 +67,16 @@ static char	*is_xpm_check(char **str, char *path)
 
 	start = 0;
 	i = 0;
-	while (str[0][i])
+	if (str[1] != NULL)
+		return (NULL);
+	else
 	{
-		if (((str[0][0] == '.' && (str[0][1] && str[0][1] == '/'))
-				|| (str[0][0] == '/')) && str[1] == NULL)
-		{
-			start = i;
-			while (str[0][i] && str[0][i] != 32)
-				i++;
-			path = ft_substr(str[0], start, i);
-			double_str_free(str);
-			return (path);
-		}
-		if (str[0][i])
+		start = i;
+		while (str[0][i] && str[0][i] != 32)
 			i++;
+		path = ft_substr(str[0], start, i);
+		double_str_free(str);
+		return (path);
 	}
 	return (path);
 }
@@ -92,9 +88,7 @@ char	*find_texture_path(char *clean_str)
 
 	path = NULL;
 	str = ft_split(clean_str, 32);
-	if (((str[0][0] == '.' && (str[0][1] && str[0][1] == '/'))
-			|| (str[0][0] == '/')) && str[1] == NULL)
-		path = is_xpm_check(str, path);
+	path = is_xpm_check(str, path);
 	if (!path)
 	{
 		double_str_free(str);

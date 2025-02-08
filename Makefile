@@ -1,8 +1,8 @@
 NAME = cub3D
 CC = cc
-CFLAGS = -Wall -Wextra -Werror #-fsanitize=leak -g
+CFLAGS = -Wall -Wextra -Werror
 MINIFLAGS = -Llib/minilibx_linux -lmlx -L/usr/lib -Ilib/minilibx_linux -lXext -lX11 -lm -lz
-#-fsanitize=address
+
 RM = rm -rf
 SRCS = cub3d.c\
 		./utils/util.c\
@@ -33,14 +33,11 @@ SRCS = cub3d.c\
 MLX = ./lib/minilibx_linux/libmlx.a
 OBJS = $(SRCS:.c=.o)
 LIBFT = ./lib/libft/libft.a
-PINK = \033[0;35m
-NC = \033[0m
 
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(MLX) $(OBJS) 
 	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MINIFLAGS) -o $(NAME)
-	@echo "$(PINK)<< THE GAME IS READY! <3 >>$(NC)"
 
 $(MLX):
 	@make -C ./lib/minilibx_linux
@@ -52,12 +49,10 @@ clean:
 	@make clean -C ./lib/libft
 	@make clean -C ./lib/minilibx_linux
 	$(RM) $(OBJS)
-	@echo "$(PINK)<< OBJECT FILES ARE REMOVED! <3 >>$(NC)"
 
 fclean: clean
 	$(RM) $(NAME)
 	@make fclean -C ./lib/libft
-	@echo "$(PINK)<< THE GAME IS REMOVED! <3 >>$(NC)"
 
 re: fclean all
 

@@ -6,7 +6,7 @@
 /*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 20:01:34 by itulgar           #+#    #+#             */
-/*   Updated: 2025/02/06 11:25:53 by zayaz            ###   ########.fr       */
+/*   Updated: 2025/02/07 20:36:19 by zayaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,14 @@ static int	is_cub_extension(char *path)
 
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
-		return (error_message("File Error 🥺\n"), 0);
+		return (error_message("File error 🥺\n"), 0);
 	close(fd);
 	i = ft_strlen(path) - 1;
 	if (!(path[i] == 'b' && path[i - 1] == 'u' && path[i - 2] == 'c'
 			&& path[i - 3] == '.'))
-		return (error_message("Not with .cub extension 🥺\n"), 0);
+		return (error_message("File error 🥺\n"), 0);
+	else if (path[i - 4] && path[i - 4] == '/')
+		return (error_message("File error 🥺\n"), 0);
 	return (1);
 }
 

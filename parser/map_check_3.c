@@ -6,13 +6,13 @@
 /*   By: zayaz <zayaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 17:56:19 by itulgar           #+#    #+#             */
-/*   Updated: 2025/02/05 20:26:40 by zayaz            ###   ########.fr       */
+/*   Updated: 2025/02/07 15:15:18 by zayaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../lib/cub3D.h"
 
-static void	check_player_boundary(t_data *data)
+void	check_player_boundary(t_data *data)
 {
 	int	close_above;
 	int	close_down;
@@ -60,19 +60,16 @@ static void	player_b_loc(t_data *data)
 
 static void	flood_fill(t_data *data, int x, int y)
 {
-	if (data->cub_map.b_map[y][x] == 'B' || data->cub_map.b_map[y][x] == '*')
+	if (x < 0 || y < 0 || y >= data->cub_map.map_row
+		|| x >= (int)ft_strlen(data->cub_map.cpymap[y])
+		|| data->cub_map.cpymap[y][x] == '*'
+		|| data->cub_map.cpymap[y][x] == ' ')
 		return ;
-	data->cub_map.b_map[y][x] = '*';
+	data->cub_map.cpymap[y][x] = '*';
 	flood_fill(data, x + 1, y);
 	flood_fill(data, x - 1, y);
 	flood_fill(data, x, y + 1);
 	flood_fill(data, x, y - 1);
-}
-
-static void	start_flood_fill(t_data *data)
-{
-	player_b_loc(data);
-	flood_fill(data, data->player.p_b_x, data->player.p_b_y);
 }
 
 void	flood_fill_check(t_data *data)
@@ -82,18 +79,15 @@ void	flood_fill_check(t_data *data)
 
 	i = 0;
 	j = 0;
-	start_flood_fill(data);
-	while (data->cub_map.b_map[i])
+	flood_fill(data, data->player.p_x, data->player.p_y);
+	while (data->cub_map.cpymap[i])
 	{
 		j = 0;
-		while (data->cub_map.b_map[i][j])
+		while (data->cub_map.cpymap[i][j])
 		{
-			if (data->cub_map.b_map[i][j] == '1'
-				|| data->cub_map.b_map[i][j] == '0'
-				|| data->cub_map.b_map[i][j] == 'N'
-				|| data->cub_map.b_map[i][j] == 'S'
-				|| data->cub_map.b_map[i][j] == 'W'
-				|| data->cub_map.b_map[i][j] == 'E')
+			if (data->cub_map.cpymap[i][j] != ' '
+				&& data->cub_map.cpymap[i][j] != '*'
+				&& data->cub_map.cpymap[i][j] != '\n')
 			{
 				fill_map_free(data);
 				error_message("Multi map! 🥺\n");
@@ -102,4 +96,5 @@ void	flood_fill_check(t_data *data)
 		}
 		i++;
 	}
+	player_b_loc(data);
 }
